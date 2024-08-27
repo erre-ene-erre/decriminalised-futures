@@ -1,0 +1,9 @@
+Title: Contact
+
+----
+
+Info: <p>For any queries, please reach out to us at:<br><a href="mailto:info@decriminalisedfutures.org" title="Hello"><em>info@decriminalisedfutures.org</em></a></p><p>follow @decrimfutures on:<br><a href="https://www.instagram.com/decrimfutures/" target="_blank"><em>instagram</em></a>, <a href="https://x.com/decrimfutures" target="_blank"><em>x (twitter)</em></a></p><p>For donations:<br><em><br></em>Website design and development by<br><a href="https://rodrigonava.mx" target="_blank"><em>rodrigo nava ramirez</em></a></p><p>The project is supported and funded by:</p>
+
+----
+
+Uuid: CfYntqvq4BJJQ7e3
