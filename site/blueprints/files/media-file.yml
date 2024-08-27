@@ -1,0 +1,15 @@
+title: Media File
+
+accept:
+  mime: image/*, video/*
+  maxsize: 90000000
+
+fields:
+  caption:
+    type: textarea
+    uploads: false
+    width: 1/2
+  alt:
+    label: alt text
+    type: text
+    help: description for screen readers (accessibility)

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;1,200;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+:root {
+    --background: #e6e6e6;
+    --main: #000;
+    --highlight-one: #0000ff;
+    --highlight-two: #ff00ff;
+    --margin: 15px;
+}
+
+html {
+    box-sizing: border-box;
+    background-color: var(--background);
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 200;
+    font-style: normal;
+    color: var(--main);
+    font-size: 15px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {display: none;}
+body {margin: 0;}
+
+body>* {
+    margin: 0;
+    scrollbar-width: none;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2{
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+h1{font-size: 2rem; text-transform: uppercase;}
+h2{ font-size: 1rem; letter-spacing: 1px;}
+
+h3, a{
+    font-size: 1rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 200;
+    font-style: italic;
+}
+h3.strong{
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-style: italic;
+}
+a{color: inherit; transition: all 0.3s;}
+a:hover{
+    color: var(--highlight-one);
+    filter: drop-shadow(0 0 5px var(--highlight-two));
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+table tr { vertical-align: top;}
+table th {
+    font-style: italic;
+    text-align: right;
+}
+table td {
+    text-align: right; 
+    padding-left: var(--margin); 
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;}
+
+.content p{
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+}
+.mobile{display: none;}
+
+/* HEADER */
+header{
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    align-items: baseline;
+    align-items: flex-end;
+    margin: 0;
+    top: 0;
+    background-color: var(--background);
+    /* box-shadow: 0 20px 15px -13px var(--highlight-two); */
+}
+header ul.menu{display: flex; gap: calc(var(--margin) * 2); margin: 0 var(--margin);}
+header .menu-button a {text-decoration: none;}
+header .logo{width: 225px; margin: 10px var(--margin);}
+header .logo .star-1{fill: var(--highlight-two);}
+header .logo .star-2{fill: var(--highlight-one);}
+
+header:before{
+    content: '';
+    height: 30px;
+    position: absolute;
+    background: linear-gradient(var(--highlight-two), rgba(0, 0, 0, 0));
+    bottom: -30px;
+    width: 100%;
+    z-index: 0;
+    border-top: 3px solid var(--highlight-one);
+}
+
+/* MAIN CONTAINER */
+.main-container{ margin: 0 var(--margin);}
+
+.event .content{
+    /* width: calc((100vw * 2) / 3); */
+    width: calc(((100vw * 2) / 3) - (var(--margin) * 2));
+    max-width: 650px;
+}
+.event .content .info{
+    font-size: 1.1rem;
+    letter-spacing: 0.4px;
+}
+.event-title{margin-bottom: 150px;}
+
+.event .extra-info{
+    position: fixed;
+    top: 95px;
+    right: var(--margin);
+    width: calc((100vw / 3) - (var(--margin) * 2));
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 110px);
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.extra-info .bordered.highlight {
+    background-color: var(--background);
+    padding: 0 var(--margin);
+    border: 3px solid var(--highlight-two);
+}
+.extra-info .categories{width: 75%;}
+/* GALLERY */
+.gallery{ 
+    display: flex; 
+    gap: var(--margin);
+    width: 100vw;
+    overflow-x: scroll;
+    margin-left: calc(-1 * var(--margin));
+    padding-left: calc(100vw / 3);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-right: 0 var(--margin);
+}
+.gallery::-webkit-scrollbar {display: none;}
+figure.gallery-item{margin: 0;}
+/* figure.gallery-item a{ display: inline-block; text-decoration: none;} */
+figure.gallery-item img{border: 3px solid var(--highlight-one);}
+
+
+/* MOBILE */
+@media screen and (max-width: 560px) {
+.desktop{display: none;}
+.mobile{display: block;}
+h2{font-size: 1.5rem;}
+header .logo{width: 60px;}
+}

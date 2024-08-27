@@ -1,5 +1,26 @@
 title: Site
 
-sections:
-  pages:
-    type: pages
+columns:
+  - width: 1/2
+    sections:
+      information:
+        type: fields
+        fields:
+          metadescription:
+            label: Meta Description
+            type: textarea
+            buttons: false
+            help: 
+              en: This description is what appears in Google search.
+  - width: 1/2
+    sections:
+      generals:
+        label: Information
+        type: pages
+        template: info
+        image: false
+      events:
+        type: pages
+        template: event
+        image: false
+        flip: true

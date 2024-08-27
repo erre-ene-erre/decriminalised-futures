@@ -1,0 +1,11 @@
+Title: Info
+
+sections:
+  content:
+    type: fields
+    fields:
+      info:
+        label: Text Content
+        type: writer
+        toolbar:
+          inline: false

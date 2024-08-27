@@ -23,8 +23,10 @@
     <?php else: ?>
     <title><?= $page->title() ?>  &#9650;  <?= $site->title() ?></title>
     <?php endif ?>
-    <link rel="icon" type='image/png' href="">
+    <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
     <?= css('/assets/css/index.css') ?>
 </head>
 <body>
+    <?php snippet('header-menu') ?>
+    <main class='main-container <?= str_replace(' ', '-', $page -> template()) ?>' >

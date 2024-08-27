@@ -1,0 +1,56 @@
+Title: Event
+num: '{{ page.datestart.toDate("Ymd") }}'
+
+columns:
+  - width: 2/3
+    sections:
+      information:
+        type: fields
+        fields:
+          metadescription:
+            label: Meta Description
+            type: textarea
+            buttons: false
+            help: The description that appears in Google search, if you give none it will just take the one from the site.
+          datestart:
+            type: date
+            width: 1/2
+            display: DD.MM.YYYY
+            default: today
+            required: true
+          dateend:
+            type: date
+            width: 1/2
+            display: DD.MM.YYYY
+            min: '{{ page.datestart.toDate("Y-m-d") }}'
+            help: Only in case it lasts longer than one day.
+          type:
+            type: tags
+            width: 1/2
+          subject:
+            label: Subject(s)
+            type: tags
+            width: 1/2
+          highlight:
+            label: Modal Highlight
+            type: writer
+            toolbar:
+              inline: false
+          textcontent:
+            label: Content
+            type: writer
+            toolbar:
+              inline: false
+  - width: 1/3
+    sections:
+      cover:
+        label: Project Cover
+        type: files
+        template: project-icon
+        layout: cards
+        max: 1
+      media:
+        label: Visual Media
+        type: files
+        template: media-file
+        layout: cards
