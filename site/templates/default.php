@@ -6,4 +6,5 @@
 <p>I am just a test paragraph</p>
 <h3>For decriminalised futures</h3>
 
+<section id='info-modal' class='hidden'></section>
 <?php snippet('footer') ?>

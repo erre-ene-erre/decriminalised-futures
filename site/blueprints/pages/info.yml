@@ -9,3 +9,16 @@ sections:
         type: writer
         toolbar:
           inline: false
+        marks:
+          - bold
+          - italic
+          - underline
+          - link
+          - email
+          - sub
+          - sup
+          - clear
+        nodes:
+          - paragraph
+          - bulletList
+          - orderedList

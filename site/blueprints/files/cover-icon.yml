@@ -1,0 +1,11 @@
+title: Media File
+
+accept:
+  mime: image/*
+  maxsize: 90000000
+
+fields:
+  alt:
+    label: alt text
+    type: text
+    help: description for screen readers (accessibility)

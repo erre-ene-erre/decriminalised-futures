@@ -1,8 +1,7 @@
 <?php snippet('header') ?>
 
-<section class='all-events'></section>
-<section class='filters'>
-    
-</section>
+<?php snippet('home-content') ?>
+
+<section id='info-modal' class='hidden' data-swup-fragment-url="/"></section>
 
 <?php snippet('footer') ?>

@@ -26,7 +26,7 @@ Highlight: <p><strong>15.02 - 22.05.2022</strong></p><p>EXHIBITION <br>ICA</p><p
 
 ----
 
-Textcontent: <p>Full decriminalisation of sex work is the rallying cry that unites the sex worker rights movement across the world. Under this banner, sex workers and their allies have fought tirelessly for strong workers’ rights, an end to exploitation, an end to criminalisation, and real measures to address poverty. Decriminalised Futures is a celebration of this movement. This exhibition is a testament to what can be created when we use this movement as our inspiration; when we take politicised sex worker organising as our starting point.</p><p>– Elio Sea and Yves Sanglante, co-curators</p>
+Textcontent: <blockquote><p>Full decriminalisation of sex work is the rallying cry that unites the sex worker rights movement across the world. Under this banner, sex workers and their allies have fought tirelessly for strong workers’ rights, an end to exploitation, an end to criminalisation, and real measures to address poverty. Decriminalised Futures is a celebration of this movement. This exhibition is a testament to what can be created when we use this movement as our inspiration; when we take politicised sex worker organising as our starting point.</p></blockquote><p><em>– Elio Sea and Yves Sanglante, co-curators</em></p>
 
 ----
 

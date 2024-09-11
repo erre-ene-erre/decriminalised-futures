@@ -1,4 +1,4 @@
-<header>
+<header id ='menu' data-swup-fragment-url="/">
 <ul class='menu'>
     <li class=' menu-button desktop'><a href='<?= $site -> url() ?>'><h2>Home</h2></a></li>
     <?php foreach($site -> children() -> template('info') -> listed() as $menuItem): ?>

@@ -6,4 +6,4 @@ Uuid: KVqknrTZfufKS3V7
 
 ----
 
-Template: project-icon
+Template: cover-icon
