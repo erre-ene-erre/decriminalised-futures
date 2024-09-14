@@ -1,0 +1,5 @@
+title: Text File
+
+accept:
+  mime: application/pdf, application/msword
+  maxsize: 90000000

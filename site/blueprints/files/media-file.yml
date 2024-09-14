@@ -1,7 +1,7 @@
 title: Media File
 
 accept:
-  mime: image/*, video/*
+  mime: image/*, video/mp4
   maxsize: 90000000
 
 fields:

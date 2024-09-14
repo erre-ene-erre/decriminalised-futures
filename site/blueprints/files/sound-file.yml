@@ -1,0 +1,11 @@
+title: Sound File
+
+accept:
+  mime: audio/*
+  maxsize: 90000000
+
+fields:
+  trackname:
+    type: text
+    label: title
+    help: The title of the track, if none is provided it says "Listen"

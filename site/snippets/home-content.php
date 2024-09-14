@@ -1,33 +1,41 @@
 
 <?php 
     $events = $kirby -> collection('all-events');
-    // if($tag = param('type')){
-    //     $events = $kirby -> collection('all-events') ->filterBy('eventtype', param('type'), ',');
-    // }else if($tag = param('subject')){
-    //     $events = $kirby -> collection('all-events') ->filterBy('location', param('at'), ',');
-    // }
+    if($tag = param('year')){
+        $events = $events ->filter (fn ($child) => $child->datestart()->toDate('Y') == param('year') or $child->dateend()->toDate('Y') == param('year'));
+    }
+    if($tag = param('type')){
+        $events = $events ->filterBy('type', param('type'), ',');
+    }
+    if($tag = param('subject')){
+        $events = $events ->filterBy('subject', param('subject'), ',');
+    }
 ?>
 
 <section class='content all-events'>
-    <?php foreach($events as $event): ?>
-            <a class='event' href='<?= $event -> url() ?>'>
-            <span><?= A::first($event->type()->split()) ?></span>
-            <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
-                    <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                    <?php if($event->images()->template('cover-icon')->isNotEmpty()): ?>
-                    <mask id="svgmask">
-                    <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                    </mask>
-                    <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> url() ?>" mask="url(#svgmask)"></image>
-                    <path class="star-outline" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+    <?php if($events->isEmpty()): ?>
+        <h3 class='strong'>No events match the selected criteria in our archive.<br>Please try another query.</h3>
+    <?php else: ?>
+        <?php foreach($events as $event): ?>
+                <a class='event' href='<?= $event -> url() ?>'>
+                <span><?= A::first($event->type()->split()) ?></span>
+                <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
+                        <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+                        <?php if($event->images()->template('cover-icon')->isNotEmpty()): ?>
+                        <mask id="svgmask">
+                        <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+                        </mask>
+                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> url() ?>" mask="url(#svgmask)"></image>
+                        <path class="star-outline" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
 
-                    <?php else: ?>
-                    <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                    <?php endif ?>
-            </svg>
-            <h3 class='strong'><?= $event -> title()?></h3>
-            </a> 
-    <?php endforeach ?>
+                        <?php else: ?>
+                        <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+                        <?php endif ?>
+                </svg>
+                <h3 class='strong'><?= $event -> title()?></h3>
+                </a> 
+        <?php endforeach ?>
+    <?php endif ?>
 </section>
 <section class='extra-info filters'>
     <table class='filters'>

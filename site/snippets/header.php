@@ -26,8 +26,9 @@
     <?php endif ?>
     <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
-    <?= css('/assets/css/index.css') ?>
+    <?= css('/assets/css/index.css?v=1.2.1') ?>
 </head>
 <body>
     <?php snippet('header-menu') ?>
+    <?php snippet('accessibility-menu') ?>
     <main id='swup' class=' transition-fade main-container <?= str_replace(' ', '-', $page -> template()) ?>' >
