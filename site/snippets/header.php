@@ -26,7 +26,7 @@
     <?php endif ?>
     <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
-    <?= css('/assets/css/index.css?v=1.2.1') ?>
+    <?= css('/assets/css/index.css?v=1.2.2') ?>
 </head>
 <body>
     <?php snippet('header-menu') ?>

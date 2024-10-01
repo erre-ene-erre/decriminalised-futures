@@ -522,17 +522,19 @@ html.is-animating .transition-fade {
     header ul.menu {
         flex-direction: column;
         position: absolute;
-        top: -700px;
         gap: var(--margin);
         background-color: var(--background);
         margin: 0;
+        top: 82px;
+        opacity: 0;
+        pointer-events: none;
         padding: 15px;
         width: 100vw;
-        transition: top 0.4s;
+        transition: opacity 0.4s;
         gap: var(--margin);
         border-top: 3px solid var(--highlight-one);
     }
-    header ul.menu.shown{top: 83px;}
+    header ul.menu.shown{opacity: 1; pointer-events: auto;}
     header ul.menu::before {
       content: '';
       height: 30px;

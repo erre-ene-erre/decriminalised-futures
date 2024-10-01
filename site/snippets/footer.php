@@ -12,6 +12,6 @@
      <!-- <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>       -->
     <script src="https://unpkg.com/swup@4"></script>
     <script src="https://unpkg.com/@swup/fragment-plugin@1"></script>
-    <?= js('/assets/js/main.js?v=1.2.1') ?>
+    <?= js('/assets/js/main.js?v=1.2.2') ?>
 </body>
 </html>

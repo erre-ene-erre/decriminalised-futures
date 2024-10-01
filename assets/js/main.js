@@ -155,8 +155,14 @@ function resetAcc() {
 //MENU ON MOBILE
 let menuShowBttn = document.querySelector('header .showMenu');
 let menu = document.querySelector ('header .menu');
+let menuLinks = document.querySelectorAll('.menu .menu-button');
 
 menuShowBttn.addEventListener('click', () => {toggleDiv(menu);});
+menuLinks.forEach(link => {link.addEventListener('click', () => {
+    setTimeout(() => {
+        toggleDiv(menu);
+    }, 500);
+})});
 
 function init() {
     UnLazy.lazyLoad()
