@@ -1,9 +1,0 @@
-Sort: 1
-
-----
-
-Uuid: KVqknrTZfufKS3V7
-
-----
-
-Template: cover-icon
