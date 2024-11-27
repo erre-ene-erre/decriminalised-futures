@@ -27,10 +27,19 @@ columns:
           type:
             type: tags
             width: 1/2
+            options: query
+            query: page.siblings.pluck("type", ",", true)
+          series:
+            type: tags
+            width: 1/2
+            options: query
+            query: page.siblings.pluck("series", ",", true)
           subject:
             label: Subject(s)
             type: tags
             width: 1/2
+            options: query
+            query: page.siblings.pluck("subject", ",", true)
           highlight:
             label: Modal Highlight
             type: writer
@@ -47,6 +56,8 @@ columns:
               - clear
             nodes:
               - paragraph
+              - bulletList
+              - orderedList
             help: Try to keep it at about 300 characters max
           textcontent:
             label: Content

@@ -26,9 +26,12 @@
     <?php endif ?>
     <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
-    <?= css('/assets/css/index.css?v=1.2.2') ?>
+    <?= css('/assets/css/index.css?v=1.2.3') ?>
 </head>
 <body>
-    <?php snippet('header-menu') ?>
-    <?php snippet('accessibility-menu') ?>
     <main id='swup' class=' transition-fade main-container <?= str_replace(' ', '-', $page -> template()) ?>' >
+    <?php if($page -> isHomePage()): ?>
+    <?php else: ?>
+        <?php snippet('header-menu') ?>
+    <?php endif ?>
+    <?php snippet('accessibility-menu') ?>

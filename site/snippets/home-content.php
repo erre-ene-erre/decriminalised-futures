@@ -1,86 +1,68 @@
 
-<?php 
-    $events = $kirby -> collection('all-events');
-    if($tag = param('year')){
-        $events = $events ->filter (fn ($child) => $child->datestart()->toDate('Y') == param('year') or $child->dateend()->toDate('Y') == param('year'));
-    }
-    if($tag = param('type')){
-        $events = $events ->filterBy('type', param('type'), ',');
-    }
-    if($tag = param('subject')){
-        $events = $events ->filterBy('subject', param('subject'), ',');
-    }
-?>
+<header class='header home'>
+<h1>    
+<?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
+    Current / Upcoming
+<?php endif ?>
+</h1>
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9">
+        <g class='letters'>
+          <path d="M48.49,63.83H0v-20.63L28.48,14.81h7.58V0h12.43v63.83ZM36.06,26.89h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>
+          <path d="M59.86,14.81h48.05v20.9l-15.43,15.52h15.52v12.7h-48.14V14.81ZM72.12,27.24v23.98h2.38l21.16-21.25v-2.73h-23.54Z"/>
+          <path d="M167.42,51.14v12.7h-48.58v-20.81l28.12-28.21h20.45v12.7h-15.16l-21.16,21.25v2.38h36.32Z"/>
+          <path d="M178.79,26.36l11.46-11.46h22.31v12.43h-16.58l-4.76,4.76v31.74h-12.43V26.36Z"/>
+          <path d="M222.16,12.25V0h12.43v12.25h-12.43ZM234.6,14.81v49.02h-12.43V14.81h12.43Z"/>
+          <path d="M286.35,63.83h-12.7V26.89h-15.16v36.94h-12.43V14.81h48.4l28.21,28.12v20.9h-12.7v-15.61l-21.25-21.34h-2.38v36.94Z"/>
+          <path d="M332.63,12.25V0h12.43v12.25h-12.43ZM345.06,14.81v49.02h-12.43V14.81h12.43Z"/>
+          <path d="M369.66,63.83h-12.7V14.81h22.31l28.21,27.95v21.07h-12.7v-15.78l-21.25-21.16h-3.88v36.94Z"/>
+          <path d="M417.62,42.67l15.43-15.52h-15.52v-12.34h48.58v49.02h-48.49v-21.16ZM429.87,51.14h23.1v-23.98h-1.94l-21.16,21.25v2.73Z"/>
+          <path d="M490.26,0v63.83h-12.43V0h12.43Z"/>
+          <path d="M501.55,12.25V0h12.43v12.25h-12.43ZM513.98,14.81v49.02h-12.43V14.81h12.43Z"/>
+          <path d="M537.87,48.23l-12.52-12.52V14.81h48.05v12.43h-35.71v2.73l18.16,18.25h-17.99ZM560.88,30.42l12.52,12.61v20.9h-48.05v-12.43h35.79v-2.73l-18.25-18.34h17.99Z"/>
+          <path d="M585.03,14.81h48.05v20.9l-15.43,15.52h15.52v12.7h-48.14V14.81ZM597.29,27.24v23.98h2.38l21.16-21.25v-2.73h-23.54Z"/>
+          <path d="M692.5,63.83h-48.49v-20.63l28.48-28.39h7.58V0h12.43v63.83ZM680.07,26.89h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>
+            <path d="M345.39,109.42h-25.74v28.48h-12.43v-28.48h-9.96v-11.64h9.96v-11.64l11.46-11.46h26.54v12.43h-20.81l-4.76,4.76v5.91h25.74v11.64Z"/>
+            <path d="M465.65,86.76h-21.34v19.84l4.76,4.76h16.58v12.43h-22.31l-11.46-11.46v-25.57h-14.2v-11.64h14.2v-15.25h12.43v15.25h21.34v11.64Z"/>
+            <path d="M539.41,86.23l11.46-11.46h22.31v12.43h-16.58l-4.76,4.76v31.74h-12.43v-37.47Z"/>
+            <path d="M584.87,74.68h48.05v20.9l-15.43,15.52h15.52v12.7h-48.14v-49.11ZM597.13,87.11v23.98h2.38l21.16-21.25v-2.73h-23.54Z"/>
+            <path d="M656.37,108.1l-12.52-12.52v-20.9h48.05v12.43h-35.71v2.73l18.16,18.25h-17.99ZM679.38,90.29l12.52,12.61v20.9h-48.05v-12.43h35.79v-2.73l-18.25-18.34h17.99Z"/>
+            <path d="M515.34,74.94h12.7v49.02h-22.31l-28.21-27.95v-21.07h12.7v15.78l21.25,21.16h3.88v-36.94Z"/>
+            <path d="M394.45,74.52h12.7v49.02h-22.31l-28.21-27.95v-21.07h12.7v15.78l21.25,21.16h3.88v-36.94Z"/>
+        </g>
+        <path class="star-1" d="M743.38,32.83s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+        <path class="star-2" d="M735.98,40.38s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+    </svg>
+</header>
 
-<section class='content all-events'>
-    <?php if($events->isEmpty()): ?>
-        <h3 class='strong'>No events match the selected criteria in our archive.<br>Please try another query.</h3>
-    <?php else: ?>
-        <?php foreach($events as $event): ?>
-                <a class='event' href='<?= $event -> url() ?>'>
-                <span><?= A::first($event->type()->split()) ?></span>
-                <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
-                        <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                        <?php if($event->images()->template('cover-icon')->isNotEmpty()): ?>
-                        <mask id="svgmask">
-                        <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                        </mask>
-                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> url() ?>" mask="url(#svgmask)"></image>
-                        <path class="star-outline" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+<section class='content home'>
+    <?php foreach($kirby -> collection('current-events') as $current): ?>
+         <a class='current' href='<?= $current -> url() ?>'>
+            <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15">
+                <?php if($current->images()->template('cover-icon')->isNotEmpty()): ?>
+                <mask id="svgmask">
+                <path class="star-m" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
+                </mask>
+                <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $current ->images() ->template('cover-icon') ->first() -> url() ?>" mask="url(#svgmask)"></image>
+                <path class="star-outline" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
+                <?php else: ?>
+                <path class="star" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
+                <?php endif ?>
+            </svg>
+            <h2><?= $current -> title()?></h2>
+        </a> 
+    <?php endforeach ?>
+</section>
 
-                        <?php else: ?>
-                        <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                        <?php endif ?>
-                </svg>
-                <h3 class='strong'><?= $event -> title()?></h3>
-                </a> 
-        <?php endforeach ?>
-    <?php endif ?>
+<?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
+<section class='bottom home'>
+    <div class='menu-button accessibility'><h2>Accessibility</h2></div>
+    <a href='<?= page('archive') -> url() ?>'>
+        <h1>Archive</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.01 12.51">
+            <path d="M11.48,0l-1.27,2.34,4.6,2.5H0v2.55h15.24l-5.03,2.7,1.27,2.42,8.53-4.84v-2.84L11.48,0ZM17.32,6.27v-.07l.06.03-.06.03Z"/>
+        </svg>
+    </a>
 </section>
-<section class='extra-info filters'>
-    <table class='filters'>
-        <tr>
-            <th>Year:</th>
-            <td>
-                <span class='year tag <?php e(!param('year'), 'active')?>' data-value=''>all</span>
-                    <?php 
-                        $startdates = $kirby -> collection('all-events') -> pluck('datestart', ' ', true);
-                        $enddates = $kirby -> collection('all-events') -> pluck('dateend', ' ', true);
-                        $alldates = array_merge($startdates, $enddates);
-                        $years = array_unique(array_map(function($item){
-                            return date('Y', strtotime($item));
-                        }, $alldates));
-                        rsort($years);
-                    ?>
-                    <?php foreach($years as $tag): ?>
-                    <span class='year tag <?php e(param('year') == Str::replace($tag,' ','-'), 'active')?>' 
-                        data-value='year:<?= Str::replace($tag,' ','-') ?>'>
-                        <?= strtolower(html($tag))?></span>
-                <?php endforeach ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Type:</th>
-            <td>
-                <span class='type tag <?php e(!param('type'), 'active')?>' data-value=''>all</span>
-                <?php foreach($kirby -> collection('all-events') -> pluck('type', ',', true) as $tag): ?>
-                    <span class='type tag <?php e(param('type') == Str::replace($tag,' ','-'), 'active')?>' 
-                        data-value='type:<?= Str::replace($tag,' ','-') ?>'>
-                        <?= strtolower(html($tag))?></span>
-                <?php endforeach ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Subject(s):</th>
-            <td>
-                <span class='subject tag <?php e(!param('subject'), 'active')?>' data-value=''>all</span>
-                <?php foreach($kirby -> collection('all-events') -> pluck('subject', ',', true) as $tag): ?>
-                    <span class='subject tag <?php e(param('subject') == Str::replace($tag,' ','-'), 'active')?>' 
-                        data-value='subject:<?= Str::replace($tag,' ','-') ?>'>
-                        <?= strtolower(html($tag))?></span>
-                <?php endforeach ?>
-            </td>
-        </tr>
-    </table>
-    <button><h2>Apply</h2></button>
-</section>
+<?php else: ?>
+    <div class='menu-button accessibility' style='display:none;'><h2>Accessibility</h2></div>
+<?php endif ?>

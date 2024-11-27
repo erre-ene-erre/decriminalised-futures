@@ -13,3 +13,22 @@ fields:
     label: alt text
     type: text
     help: description for screen readers (accessibility)
+    width: 1/2
+  info:
+    type: writer
+    uploads: false
+    toolbar:
+      inline: false
+    marks:
+      - bold
+      - italic
+      - underline
+      - link
+      - email
+      - sub
+      - sup
+      - clear
+    nodes:
+      - paragraph
+      - bulletList
+      - orderedList

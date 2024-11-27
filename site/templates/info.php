@@ -1,6 +1,6 @@
 <?php snippet('header') ?>
 
-<?php snippet('home-content') ?>
+<?php snippet('archive-content') ?>
 
 <section id='info-modal'>
     <div class='info-content text'>

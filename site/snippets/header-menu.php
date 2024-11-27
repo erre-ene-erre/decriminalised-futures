@@ -1,13 +1,31 @@
 <header id ='menu' data-swup-fragment-url="/">
 <div class='showMenu mobile'><h2>MENU</h2></div>
 <ul class='menu'>
+    <?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
     <li class='menu-button'><a href='<?= $site -> url() ?>'><h2>Home</h2></a></li>
+    <?php endif ?>
+    <li class='menu-button'><a href='<?= page('archive') -> url() ?>'><h2>Archive</h2></a></li>
     <?php foreach($site -> children() -> template('info') -> listed() as $menuItem): ?>
     <li class='menu-button'><a href='<?= $menuItem -> url() ?>'><h2><?= $menuItem -> title() ?></h2></a></li>
     <?php endforeach ?>
+    <form class='search-form' action="<?= url('search') ?>" method="get">
+      <input type="search" class="search-input" aria-label="Search" name="q" value="<?= html($query) ?>">
+      <button type="submit" class="search-button" aria-label="Search">
+        <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79.99 80.45">
+          <path d="M9.28,54.44c11.02-.1,21.4,5.18,27.8,14.16l5.38,7.56,2.79-8.85c1.41-4.48,3.72-8.56,6.72-12.01l5.64,8.2,8.15,16.94,4.97-9.25,9.25-4.97-16.94-8.15-8.24-5.67c3.55-3.21,7.8-5.67,12.51-7.15l8.85-2.79-7.56-5.38c-8.98-6.4-14.27-16.78-14.16-27.8l.09-9.28-7.45,5.53c-8.86,6.57-20.37,8.38-30.82,4.88l-8.8-2.95,2.95,8.8c3.5,10.45,1.69,21.96-4.88,30.82l-5.53,7.45,9.28-.09ZM19.78,52.47c-9.03-9.03-9.03-23.66,0-32.68,9.03-9.03,23.66-9.03,32.68,0,8.69,8.69,9.01,22.59.95,31.66-.3.35-.62.69-.95,1.02-.49.49-.99.95-1.51,1.37-9.08,7.63-22.64,7.17-31.18-1.37Z"/>
+        </svg>
+      </button>
+    </form>
     <li class='menu-button accessibility'><h2>Accessibility</h2></li>
 </ul>
-<a class='desktop' href='<?= $site -> url() ?>'>
+<?php 
+  if($kirby->collection('current-events')->isEmpty()){
+    $logoURL = page('archive') -> url();
+  }else{
+    $logoURL = $site -> url();
+  }
+ ?> 
+<a class='desktop' href='<?= $logoURL ?>'>
 <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9">
     <g class='letters'>
       <path d="M48.49,63.83H0v-20.63L28.48,14.81h7.58V0h12.43v63.83ZM36.06,26.89h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>
@@ -36,7 +54,7 @@
     <path class="star-2" d="M735.98,40.38s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
 </svg>
 </a>
-<a class='mobile' href='<?= $site -> url() ?>'>
+<a class='mobile' href='<?= $logoURL ?>'>
 <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.32 140.7">
   <g>
     <path class='letter' d="M48.49,98.01H0v-20.63l28.48-28.39h7.58v-14.81h12.43v63.83ZM36.06,61.07h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>

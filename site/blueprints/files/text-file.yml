@@ -1,5 +1,10 @@
 title: Text File
 
+fields:
+  title:
+    type: hidden
+    default: File
+
 accept:
-  mime: application/pdf, application/msword
-  maxsize: 90000000
+  mime: application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  maxsize: 9000000

@@ -6,7 +6,14 @@
             <button class='contrast' data-value="light">Light</button>
             <button class='contrast' data-value="dark">Dark</button>
         </td>
-    </tr>    
+    </tr>   
+    <tr>
+        <th>Saturation:</th>
+        <td>
+            <button class='saturation' data-value="bright">Bright</button>
+            <button class='saturation' data-value="muted">Muted</button>
+        </td>
+    </tr>  
     <tr>
         <th>Font Size:</th>
         <td>
