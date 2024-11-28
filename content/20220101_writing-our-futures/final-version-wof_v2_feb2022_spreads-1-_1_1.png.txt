@@ -1,3 +1,7 @@
+Alt: 
+
+----
+
 Sort: 3
 
 ----
@@ -7,3 +11,7 @@ Uuid: fRVjoyw1fsMx0gnR
 ----
 
 Template: cover-icon
+
+----
+
+Focus: 54.3% 37.6%

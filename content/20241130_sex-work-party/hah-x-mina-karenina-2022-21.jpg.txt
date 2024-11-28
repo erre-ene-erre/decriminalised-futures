@@ -1,0 +1,13 @@
+Alt: 
+
+----
+
+Template: cover-icon
+
+----
+
+Focus: 48.7% 61.5%
+
+----
+
+Uuid: wPe2aOpMPSDqUehz

@@ -18,7 +18,11 @@ Type: public lecture
 
 ----
 
-Subject: Latin America, Argentina
+Series: 
+
+----
+
+Subject: Argentina, Latin America, Mexico
 
 ----
 
