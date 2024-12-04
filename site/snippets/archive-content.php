@@ -14,21 +14,24 @@
     if ($typesParam = param('type')) {
     $selectedTypes = normalizeTags(explode('+', $typesParam));
     $events = $events->filter(fn($child) => 
-        count(array_intersect($selectedTypes, normalizeTags(explode(',', Str::replace($child->type()->value() ?? '', ' ', '-'))))) > 0
+        count(array_intersect($selectedTypes, normalizeTags($child->type()->split(',')))) > 0
+        // count(array_intersect($selectedTypes, normalizeTags(explode(',', Str::replace($child->type()->value() ?? '', ' ', '-'))))) > 0
         );
     }
     // Filter by series - match all selected series strictly with normalization
     if ($seriesParam = param('series')) {
         $selectedSeries = normalizeTags(explode('+', $seriesParam));
         $events = $events->filter(fn($child) => 
-            count(array_intersect($selectedSeries, normalizeTags(explode(',', Str::replace($child->series()->value() ?? '', ' ', '-'))))) > 0
+            count(array_intersect($selectedSeries, normalizeTags($child->series()->split(',')))) > 0
+            // count(array_intersect($selectedSeries, normalizeTags(explode(',', Str::replace($child->series()->value() ?? '', ' ', '-'))))) > 0
         );
     }
     // Filter by subjects - match all selected subjects strictly with normalization
     if ($subjectsParam = param('subject')) {
         $selectedSubjects = normalizeTags(explode('+', $subjectsParam));
         $events = $events->filter(fn($child) => 
-            count(array_intersect($selectedSubjects, normalizeTags(explode(',', Str::replace($child->subject()->value() ?? '', ' ', '-'))))) > 0
+            count(array_intersect($selectedSubjects, normalizeTags($child->subject()->split(',')))) > 0
+            // count(array_intersect($selectedSubjects, normalizeTags(explode(',', Str::replace($child->subject()->value() ?? '', ' ', '-'))))) > 0
         );
     }
 ?>
@@ -46,7 +49,7 @@
                         <mask id="svgmask">
                         <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
                         </mask>
-                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> url() ?>" mask="url(#svgmask)"></image>
+                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> crop(500) -> url() ?>" mask="url(#svgmask)"></image>
                         <path class="star-outline" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
 
                         <?php else: ?>
@@ -65,9 +68,12 @@
         $selectedSeries = param('series') ? explode('+', param('series')) : [];
         $selectedSubjects = param('subject') ? explode('+', param('subject')) : [];
 
-        $typetags = $kirby -> collection('all-events') -> pluck('type', ',', true);
-        $seriestags = $kirby -> collection('all-events') -> pluck('series', ',', true);
-        $subjecttags = $kirby -> collection('all-events') -> pluck('subject', ',', true);
+        // $typetags = $kirby -> collection('all-events') -> pluck('type', ',', true);
+        $typetags = $events -> pluck('type', ',', true);
+        // $seriestags = $kirby -> collection('all-events') -> pluck('series', ',', true);
+        $seriestags = $events -> pluck('series', ',', true);
+        // $subjecttags = $kirby -> collection('all-events') -> pluck('subject', ',', true);
+        $subjecttags = $events -> pluck('subject', ',', true);
         sort($typetags);
         sort($seriestags);
         sort($subjecttags);
@@ -78,8 +84,10 @@
             <td>
                 <span class='year tag all <?php e(!param('year'), 'active')?>' data-value=''>all</span>
                     <?php 
-                        $startdates = $kirby -> collection('all-events') -> pluck('datestart', ' ', true);
-                        $enddates = $kirby -> collection('all-events') -> pluck('dateend', ' ', true);
+                        $startdates = $events -> pluck('datestart', ' ', true);
+                        // $startdates = $kirby -> collection('all-events') -> pluck('datestart', ' ', true);
+                        $enddates = $events -> pluck('dateend', ' ', true);
+                        // $enddates = $kirby -> collection('all-events') -> pluck('dateend', ' ', true);
                         $alldates = array_merge($startdates, $enddates);
                         $years = array_unique(array_map(function($item){
                             return date('Y', strtotime($item));

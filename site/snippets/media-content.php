@@ -5,7 +5,7 @@
         <?php if($image ->mime() === 'image/gif'): ?>
             src= "<?= $image -> url() ?>"
         <?php else: ?>
-            data-src="<?= $image -> resize(400) -> quality(72) -> url() ?>"
+            data-src="<?= $image -> quality(72) -> url() ?>"
             data-srcset="<?= $image -> srcset() ?>"
             data-sizes="auto"
         <?php endif ?>

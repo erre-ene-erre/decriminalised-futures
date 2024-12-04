@@ -71,7 +71,8 @@
 </section>
 
 <section class='extra-info'>
-    <div class='bordered highlight'>
+
+    <div class='<?= $page->highlight() -> isNotEmpty() ? 'bordered' : '' ?> highlight'>
         <?= $page -> highlight() ?>
     </div>
     <table class='categories'>
@@ -84,6 +85,7 @@
                 <?php endif ?>
             </td>
         </tr>
+        <?php if($page -> type() -> isNotEmpty()): ?>
         <tr>
             <th>Type:</th>
             <td>
@@ -92,6 +94,18 @@
             <?php endforeach ?>
             </td>
         </tr>
+        <?php endif ?>
+        <?php if($page -> series() -> isNotEmpty()): ?>
+        <tr>
+            <th>Series:</th>
+            <td>
+            <?php foreach ($page->series()->split() as $series): ?>
+                <span><?= $series ?></span>
+            <?php endforeach ?>
+            </td>
+        </tr>
+        <?php endif ?>
+        <?php if($page -> subject() -> isNotEmpty()): ?>
         <tr>
             <th>Subject(s):</th>
             <td>
@@ -100,5 +114,6 @@
             <?php endforeach ?>
             </td>
         </tr>
+        <?php endif ?>
     </table>
 </section>

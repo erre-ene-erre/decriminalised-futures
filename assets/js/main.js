@@ -93,11 +93,13 @@ function init() {
         if (type == 'bright') {
             document.documentElement.style.setProperty('--highlight-one', '#fe4d4d');
             document.documentElement.style.setProperty('--highlight-two', '#ec1bde');
-            document.documentElement.style.setProperty('--highlight-two-gradient', 'rgba(236, 27, 222, 0.5)');
+            document.documentElement.style.setProperty('--highlight-one-gradient', '#fe4d4d80');
+            document.documentElement.style.setProperty('--highlight-two-gradient', '#ec1bde80');
         } else if (type == 'muted') {
             document.documentElement.style.setProperty('--highlight-one', '#5c2d2d');
             document.documentElement.style.setProperty('--highlight-two', '#8f868e');
-            document.documentElement.style.setProperty('--highlight-two-gradient', 'rgba(143,134,142, 0.5)');
+            document.documentElement.style.setProperty('--highlight-one-gradient', '#5c2d2d80');
+            document.documentElement.style.setProperty('--highlight-two-gradient', '#8f868e80');
         }
         contrastType = type;
         updateLocalStorage();
@@ -216,6 +218,32 @@ function init() {
             arrow.classList.toggle('open');
             extraInfo.classList.toggle('open');
         });
+    }
+
+    //Gallery positioning on events
+    if(document.querySelector('.gallery')){
+        setTimeout(() => {
+            updateGalleryPadding();
+        }, 500);
+        window.addEventListener('resize', updateGalleryPadding);
+        // document.addEventListener("DOMContentLoaded", updateGalleryPadding);
+    }
+
+    function updateGalleryPadding() {
+        let gallery = document.querySelector('.gallery');
+        let firstImage = gallery.querySelector('.gallery-item');
+        console.log(firstImage.offsetWidth);
+        if (firstImage) {
+            const firstImageWidth = firstImage.offsetWidth;
+            const padding = `0 calc(50vw - ${firstImageWidth / 2}px)`;
+
+            gallery.style.padding = padding;
+        }
+    }
+
+    // overflown filter
+    function isOverflown(element) {
+        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
     }
 
     //Get URL for filtering

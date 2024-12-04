@@ -18,6 +18,7 @@ sections:
           - sub
           - sup
           - clear
+          - code
         nodes:
           - paragraph
           - bulletList
