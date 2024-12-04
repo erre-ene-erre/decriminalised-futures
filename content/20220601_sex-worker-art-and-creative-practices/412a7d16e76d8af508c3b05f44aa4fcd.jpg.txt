@@ -1,0 +1,17 @@
+Alt: 
+
+----
+
+Sort: 1
+
+----
+
+Uuid: zNQZOdo0lbXK8xce
+
+----
+
+Template: cover-icon
+
+----
+
+Focus: 61.2% 36.8%
