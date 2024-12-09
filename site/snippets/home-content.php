@@ -58,9 +58,9 @@
     <div class='menu-button accessibility'><h2>Accessibility</h2></div>
     <a href='<?= page('archive') -> url() ?>'>
         <h1>Archive</h1>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.01 12.51">
-            <path d="M11.48,0l-1.27,2.34,4.6,2.5H0v2.55h15.24l-5.03,2.7,1.27,2.42,8.53-4.84v-2.84L11.48,0ZM17.32,6.27v-.07l.06.03-.06.03Z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17">
+            <path d="M9.8,130.17s-.37-57.63,65.12-65.09c0,0-62.51-2.18-65.12-65.09L3.17,33.04c-4.21,20.96-4.22,42.55-.05,63.51l6.68,33.62Z"/>
+        </svg> 
     </a>
 </section>
 <?php else: ?>

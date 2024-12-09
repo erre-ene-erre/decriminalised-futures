@@ -212,7 +212,7 @@ function init() {
     if (document.querySelector('.footer.mobile')) {
         let footer = document.querySelector('.footer.mobile');
         let arrow = document.querySelector('.footer .open-arrow');
-        let extraInfo = document.querySelector('.extra-info');
+        let extraInfo = document.querySelector('.modal');
 
         footer.addEventListener('click', () => {
             arrow.classList.toggle('open');

@@ -21,6 +21,9 @@ columns:
         image: false
       events:
         type: pages
+        search: true
         template: event
+        sortBy: datestart asc
+        info: '{{ page.datestart.toDate("Y") }}'
         image: false
         flip: true

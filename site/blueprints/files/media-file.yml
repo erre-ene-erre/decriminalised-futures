@@ -9,6 +9,7 @@ fields:
     type: textarea
     uploads: false
     width: 1/2
+    help: For portrait images keep it at about 140 characters, for landscape at 280, anything beyond that limit will be cropped.
   alt:
     label: alt text
     type: text

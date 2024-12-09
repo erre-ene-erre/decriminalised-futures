@@ -35,7 +35,7 @@
     
     <?php if($page -> hasChildren()):?>
     <div class='gallery'>
-    <?php foreach($page -> children() -> template('media-file') as $child): ?>
+    <?php foreach($page -> children() -> template('media-file') -> sortBy('num') as $child): ?>
         <?php if ($image = $child->image()) : ?>
                 <figure class='gallery-item'>
                 <?php if($image ->mime() === 'video/mp4'): ?>
@@ -57,7 +57,7 @@
                     </a>
                 <?php endif ?>
                 <?php if($image ->caption() -> isNotEmpty()): ?>
-                <figcaption><?= $image -> caption() ?></figcaption>
+                <figcaption><?= $image -> caption() -> kt() ?></figcaption>
                 <?php endif ?>
             </figure>
         <?php endif ?>
@@ -70,7 +70,7 @@
     </div>
 </section>
 
-<section class='extra-info'>
+<section class='extra-info modal'>
 
     <div class='<?= $page->highlight() -> isNotEmpty() ? 'bordered' : '' ?> highlight'>
         <?= $page -> highlight() ?>
