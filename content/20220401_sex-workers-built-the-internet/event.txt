@@ -10,11 +10,15 @@ Datestart: 2022-04-01
 
 ----
 
-Dateend: 2022-04-30
+Dateend: 2025-02-13
 
 ----
 
 Type: public lecture
+
+----
+
+Series: 
 
 ----
 

@@ -6,7 +6,7 @@ Template: cover-icon
 
 ----
 
-Focus: 48.7% 61.5%
+Focus: 20.9% 12.9%
 
 ----
 
