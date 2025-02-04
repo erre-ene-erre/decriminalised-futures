@@ -1,0 +1,17 @@
+Sort: 3
+
+----
+
+Isvideo: false
+
+----
+
+Caption: 
+
+----
+
+Uuid: FIPXpuiTIgMO3QP0
+
+----
+
+Template: media-file

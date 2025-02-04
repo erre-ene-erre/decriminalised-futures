@@ -14,4 +14,4 @@ Template: cover-icon
 
 ----
 
-Focus: 61.2% 36.8%
+Focus: 21.5% 39.3%
