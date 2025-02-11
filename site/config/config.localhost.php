@@ -28,6 +28,16 @@ return [
                 '1800w' => ['width' => 2700, 'height' => 1800, 'quality' => 80, 'crop' => 'center']
             ]
         ]
+    ],
+    'hooks' => [
+        'file.create:after' => function (Kirby\Cms\File $file) {
+            $name = $file->name();
+            $newName = str_replace('.', '_', $name);
+            $newFilename = $newName . '.' . $file->extension();
+            if ($newFilename !== $file -> filename()) {
+                $file->changeName($newName);
+            }
+        }
     ]
 ];
 ?>

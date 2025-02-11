@@ -106,3 +106,4 @@ columns:
         type: files
         template: media-file
         layout: cards
+        limit: 30

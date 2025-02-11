@@ -5,6 +5,40 @@ accept:
   maxsize: 90000000
 
 fields:
+  isVideo:
+    type: toggle
+    label: is it a video with a link?
+    text:
+      - "no"
+      - "yes"
+    width: 1/4
+    default: false
+  videolink:
+    type: url
+    label: Video Link
+    help: you need to add the "https://"
+    width: 1/2
+    when: 
+      isVideo: true
+  videowidth:
+    label: Width
+    type: number
+    when:
+      isVideo: true
+    width: 1/4
+    default: 560
+  help: 
+    type: info
+    label: 
+    text: |
+        You need the embed link for both vimeo and youtube, not the simple one on the browser tab, so you can just copy the video ID and paste it along the following: 
+        For vimeo:"https://player.vimeo.com/video/[videoID] 
+        For youtube https://www.youtube.com/embed/[videoID]
+        The height for youtube is always 560, in Vimeo you will have to test a bit to see what looks best.
+    when:
+      isVideo: true
+  line:
+    type: line
   caption:
     type: textarea
     uploads: false

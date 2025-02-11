@@ -4,6 +4,9 @@ fields:
   title:
     type: hidden
     default: File
+  label:
+    type: text
+    help: The label of the download link, if none is provided it says "Download"
 
 accept:
   mime: application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document

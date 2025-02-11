@@ -37,6 +37,24 @@
     <div class='gallery'>
     <?php foreach($page -> children() -> template('media-file') -> sortBy('num') as $child): ?>
         <?php if ($image = $child->image()) : ?>
+            <?php if($image -> isVideo() ->toBool() === true):?>
+                <?php 
+                    $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+                    $videoW = $image -> videowidth() ?? 560;
+                    $videoW = $isMob ? $videoW -> toFloat() * 0.6 : $videoW; 
+
+                ?>
+                <figure style="margin:0">
+                    <iframe class="gallery-item" 
+                            width="<?=$videoW?>" 
+                            src="<?= $image -> videolink()?>" 
+                            frameborder="0" allowfullscreen>
+                    </iframe>
+                    <?php if($image ->caption() -> isNotEmpty()): ?>
+                        <figcaption><?= $image -> caption() -> kt() ?></figcaption>
+                    <?php endif ?>
+                </figure>
+            <?php else: ?>
                 <figure class='gallery-item'>
                 <?php if($image ->mime() === 'video/mp4'): ?>
                     <video class="image" controls playsinline>
@@ -60,11 +78,25 @@
                 <figcaption><?= $image -> caption() -> kt() ?></figcaption>
                 <?php endif ?>
             </figure>
+            <?php endif ?>
         <?php endif ?>
     <?php endforeach ?>
     </div>
     <?php endif ?>
 
+    <?php if($page -> documents() ->isNotEmpty()): ?>
+    <div class='pdf-container'>
+    <?php foreach ($page -> files() -> template('text-file') as $textfile): ?>
+        <div class='pdf-button'>
+            <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
+                <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+                <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
+            </svg>
+            <h3 class='strong'><a href='<?= $textfile -> url() ?>' download><?= $textfile -> label() -> or('Download') ?></a></h3>
+        </div>
+    <?php endforeach?>
+    </div>
+    <?php endif ?>
     <div class='info'>
         <?= $page -> textcontent() ?>
     </div>

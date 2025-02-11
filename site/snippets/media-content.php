@@ -22,6 +22,9 @@
             data-srcset="<?= $image -> srcset() ?>"
         <?php endif ?>
         >
+        <?php if($image ->caption() -> isNotEmpty()): ?>
+            <figcaption><?= $image -> caption() -> kt() ?></figcaption>
+        <?php endif ?>
         </figure>
         <span class='next'>
         <?php if($page -> hasNextListed($collection)): ?>

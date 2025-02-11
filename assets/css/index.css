@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;1,200;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;0,600;1,200;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
 :root {
@@ -11,7 +12,6 @@
     --highlight-two: #ec1bde;
     --highlight-one-gradient: #fe4d4d80;
     --highlight-two-gradient: #ec1bde80;
-    /* --highlight-two-gradient: rgba(236, 27, 222, 0.5); */
     --margin: 15px;
 }
 
@@ -67,7 +67,7 @@ h3.strong{
     font-weight: 600;
     font-style: italic;
 }
-p { min-height: var(--margin);}
+/* p { min-height: var(--margin);} */
 a{color: inherit; transition: all 0.2s;}
 a:hover{
     color: var(--highlight-one);
@@ -227,10 +227,7 @@ content .info h2 {
 }
 .content .info blockquote:after{position: relative; display: inherit; text-align: right;}
 
-.extra-info strong, .info-content strong {
-    font-weight: 600;
-    font-style: italic;
-}
+.extra-info strong, .info-content strong {font-weight: 600;}
 
 .content .gallery figcaption p {
     font-family: "IBM Plex Mono", monospace;
@@ -442,14 +439,20 @@ header.home {align-items: flex-start; background-color: transparent;}
     min-width: 100%;
     position: relative;
 }
-.current:not(:first-child){margin-left: -40%;}
+.current:not(:first-child){margin-left: -35%;}
 .current h2 {
     position: absolute;
     margin-top: var(--margin);
     margin: 0;
     font-size: 2.2rem;
-    max-width: 60%;
+    max-width: 20%;
     text-align: center;
+    text-shadow:
+            1px 0 3px var(--background),
+            0 1px 3px var(--background),
+            -1px 0 3px var(--background),
+            0 -1px 3px var(--background);
+    transition: all 0.3s;
 }
 /* a.current svg {pointer-events: none;} */
 /* a.current svg .star, a.current svg .star-outline{ pointer-events: auto;} */
@@ -458,17 +461,20 @@ header.home {align-items: flex-start; background-color: transparent;}
 .current:nth-child(even) .star{fill: var(--highlight-two);}
 /* .current .star-outline{stroke-width: 6px; fill: none;} */
 .current .star-outline{stroke-width: 6px;}
-.current:nth-child(odd) .star-outline {stroke: var(--highlight-one); fill: var(--highlight-one-gradient)}
-.current:nth-child(even) .star-outline {stroke: var(--highlight-two); fill: var(--highlight-two-gradient)}
+.current:nth-child(odd) .star-outline {stroke: var(--highlight-one); fill: none;}
+.current:nth-child(even) .star-outline {stroke: var(--highlight-two); fill: none;}
 
 .current:hover{
     z-index: 2; 
     color: inherit;
+}
+.current:hover h2{
+    color: var(--background);
     text-shadow:
-            1px 0 3px var(--background),
-            0 1px 3px var(--background),
-            -1px 0 3px var(--background),
-            0 -1px 3px var(--background);
+            1px 0 3px var(--main),
+            0 1px 3px var(--main),
+            -1px 0 3px var(--main),
+            0 -1px 3px var(--main);
 }
 .current:nth-child(even):hover {filter: drop-shadow(0 0 3px var(--highlight-two));}
 .current:nth-child(odd):hover {filter: drop-shadow(0 0 3px var(--highlight-one));}
@@ -491,7 +497,12 @@ a.event {
 }
 a.current .icon, a.event .icon {width: 100%;}
 a.current .icon image, a.event .icon image {width: 100%;}
-a.event .icon image {x: -5%; y: 10%;}
+a.event .icon image {
+    x: -25%;
+  width: 110px;
+  height: 110px;
+  y: -25%;}
+/* a.event .icon image {x: -6%; y: 16%;} */
 a.event span, a.event h3.strong{position: absolute;}
 a.event span {
     height: fit-content;
@@ -503,6 +514,11 @@ a.event h3.strong {
     align-self: flex-end;
     max-width: 90px;
     margin-left: 100px;
+    text-shadow:
+            1px 0 3px var(--background),
+            0 1px 3px var(--background),
+            -1px 0 3px var(--background),
+            0 -1px 3px var(--background);
 }
 a.event:hover{color: inherit;}
 /* .home .extra-info,  */
@@ -616,6 +632,7 @@ a.event:hover{color: inherit;}
     font-weight: 600;
     font-style: italic;
     margin: var(--margin) 0;
+    margin-top: -75px;
 }
 
 .audio-player .media-controllers { display: flex; gap: var(--margin);}
@@ -629,6 +646,29 @@ a.event:hover{color: inherit;}
 .audio-player .media-controllers .controllers { flex-grow: 1; display: flex; flex-direction: column;}
 .audio-player .media-controllers .seek-slider { width: 100%;}
 .audio-player .media-controllers .time-range { display:flex; justify-content: space-between;}
+
+/* PDF BUTTON */
+.pdf-container {
+    display: flex;
+    gap: var(--margin);
+}
+.pdf-button{
+    display: flex;
+    width: fit-content;
+}
+.pdf-button .icon{width: 35px;}
+.pdf-button h3{
+    margin: 0;
+    margin-bottom: 23px;
+    margin-left: -5px;
+}
+.pdf-button h3 a {
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-decoration: underline;
+  text-decoration-color: var(--highlight-two);
+  -webkit-text-decoration-color: var(--highlight-two);
+}
 
 /* -----Info */
 #info-modal {
@@ -692,18 +732,22 @@ a.event:hover{color: inherit;}
 .info-content figure.lightbox{
     margin: 0; 
     text-align: center; 
-    /* height: 100%;  */
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; 
     max-height: 100%;
     height: fit-content;
-    /* max-width: calc(100% - 50px); */
-    max-width: 100%;
+    max-width: calc(100% - 50px);
+    max-width: 100%; */
 }
 .info-content.lightbox img{
     width: 100%; 
-    max-height: calc(100vh - 30px);
+    max-height: calc(100vh - 60px);
     /* height: 100%;  */
     border: 3px solid var(--highlight-one);
 }
+.info-content.lightbox figcaption{line-height: 1;}
+.info-content.lightbox figcaption p {margin: 5px 0;}
 .info-content.lightbox .bordered{
     border: 3px solid var(--highlight-two);
     margin: var(--margin);
@@ -791,11 +835,7 @@ html.is-animating .transition-fade {
     .mobile{display: flex;}
     h1{font-size: 1.7rem;}
     h2{font-size: 1.5rem;}
-    .current h2{text-shadow: 
-        1px 0 3px var(--background),
-        0 1px 3px var(--background),
-        -1px 0 3px var(--background),
-        0 -1px 3px var(--background);}
+    .current h2{font-size: 1.7rem; max-width: 60%;}
     header .logo{width: 60px;}
     header.home{flex-direction: column;}
     header.home .logo{
@@ -850,6 +890,7 @@ html.is-animating .transition-fade {
     .archive .content.all-events,
     .home .content.all-events
      { width: calc(100vw - (var(--margin) * 2)); padding-bottom: calc(var(--margin) * 5);}
+     a.event .icon image{width: 70px; height: 70px;}
     .home .content.all-events,
     .archive .content.all-events
     {justify-content: center;}
@@ -885,7 +926,8 @@ html.is-animating .transition-fade {
         padding-left: var(--margin);
         height: 35vh;
     }
-    .content .gallery figcaption p { font-size: 0.6rem; }
+    .content .gallery figcaption { display: none; }
+    .audio-player{height: 75px;}
     .event .extra-info{
         height: inherit;
         justify-content: flex-start;
@@ -915,8 +957,9 @@ html.is-animating .transition-fade {
     }
     /* .info-content .lightbox{max-width: calc(100vw - (var(--margin) * 2));} */
     .info-content.lightbox {flex-direction: column; }
-    .info-content .image-navigation {width: 100vw;}
+    .info-content .image-navigation {width: 100vw; padding-top: 50px;}
     .info-content figure.lightbox { max-width: calc(100vw - (var(--margin)*2)); min-width: auto;}
+    .info-content.lightbox figcaption {font-size: 0.9rem;}
     .info-content.lightbox .bordered { 
         max-width: calc(100vw - (var(--margin)*2)); 
         order: 2;
@@ -938,7 +981,7 @@ html.is-animating .transition-fade {
         position: fixed;
         bottom: 15px;
     }
-    .info-content.lightbox .close {align-self: center; padding-bottom: calc(var(--margin) * 5);}
+    .info-content.lightbox .close {align-self: center; position: fixed; top: 0;}
     .search-results {display: flex; flex-direction: column; gap: calc(var(--margin) * 2) 0;}
     .search-results .result{align-items: flex-start; flex-direction: column;}
     .search-results .result .icon {align-self: center;}
