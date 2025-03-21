@@ -48,3 +48,12 @@ Icon
 # ---------------
 
 /site/config/.license
+
+# Content (EXCLUDE client’s text files & pages)
+/content/*
+!/content/index.html
+
+# Environment files
+.env
+
+
