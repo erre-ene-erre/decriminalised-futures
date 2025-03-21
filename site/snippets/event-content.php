@@ -64,7 +64,7 @@
                 <?php else: ?>
                     <a href="<?= $child->url() ?>">
                     <img loading="lazy" class='<?= $image -> orientation() ?>' alt="<?= $image -> alt() ?>"
-                    <?php if($image ->mime() === 'image/gif'): ?>
+                    <?php if($image ->mime() === 'image/gif' or $image ->mime() === 'image/webp'): ?>
                         src= "<?= $image -> url() ?>"
                     <?php else: ?>
                         data-src="<?= $image -> url() ?>"
@@ -81,24 +81,19 @@
             <?php endif ?>
         <?php endif ?>
     <?php endforeach ?>
+    <div class="scroll-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17">
+            <path d="M9.8,130.17s-.37-57.63,65.12-65.09c0,0-62.51-2.18-65.12-65.09L3.17,33.04c-4.21,20.96-4.22,42.55-.05,63.51l6.68,33.62Z"/>
+        </svg>
     </div>
-    <?php endif ?>
-
-    <?php if($page -> documents() ->isNotEmpty()): ?>
-    <div class='pdf-container'>
-    <?php foreach ($page -> files() -> template('text-file') as $textfile): ?>
-        <div class='pdf-button'>
-            <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
-                <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-                <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
-            </svg>
-            <h3 class='strong'><a href='<?= $textfile -> url() ?>' download><?= $textfile -> label() -> or('Download') ?></a></h3>
-        </div>
-    <?php endforeach?>
     </div>
     <?php endif ?>
     <div class='info'>
-        <?= $page -> textcontent() ?>
+        <?php
+            $content = $page->textcontent()->kt(); 
+            $processedContent = preg_replace('/<code>(.*?)<\/code>/s', '$1', $content);
+            echo html_entity_decode($processedContent);
+        ?>
     </div>
 </section>
 

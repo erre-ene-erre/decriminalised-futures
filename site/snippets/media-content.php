@@ -15,7 +15,7 @@
         <img 
             loading="lazy" 
             alt="<?= $image -> alt() ?>"
-        <?php if($image ->mime() === 'image/gif'): ?>
+        <?php if($image ->mime() === 'image/gif' or $image ->mime() === 'image/webp'): ?>
             src= "<?= $image -> url() ?>"
         <?php else: ?>
             data-src="<?= $image -> quality(72) -> url() ?>"

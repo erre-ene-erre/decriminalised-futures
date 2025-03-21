@@ -220,13 +220,56 @@ function init() {
         });
     }
 
-    //Gallery positioning on events
+    //EVENTS FUNCTIONS
     if(document.querySelector('.gallery')){
         setTimeout(() => {
             updateGalleryPadding();
         }, 500);
-        window.addEventListener('resize', updateGalleryPadding);
-        // document.addEventListener("DOMContentLoaded", updateGalleryPadding);
+
+        let gallery = document.querySelector(".gallery");
+        let arrow = document.querySelector(".scroll-arrow");
+
+         function updateArrowVisibility() {
+           if (gallery.scrollWidth > gallery.clientWidth) {
+             arrow.classList.remove("hidden"); 
+           } else {
+             arrow.classList.add("hidden"); 
+           }
+         }
+
+         function handleScroll() {
+           arrow.classList.add("hidden"); 
+            console.log(window.scrollY, window.scrollX);
+           clearTimeout(gallery.dataset.scrollTimer);
+           gallery.dataset.scrollTimer = setTimeout(() => {
+             if (
+               gallery.scrollLeft + gallery.clientWidth <
+               gallery.scrollWidth
+             ) {
+               arrow.classList.remove("hidden");
+             }
+           }, 500); 
+         }
+         updateArrowVisibility();
+
+         let fancyLinks = document.querySelectorAll('.info .pdf-button a');
+         fancyLinks.forEach(link => {
+            link.insertAdjacentHTML('beforebegin', '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42"><path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/> <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/></svg>');
+         })
+
+         // Event listeners
+         gallery.addEventListener("scroll", handleScroll);
+         window.addEventListener("resize", () =>{
+            updateGalleryPadding;
+            updateArrowVisibility;
+         });
+    }
+
+    // LIGHTBOX FUNCTIONS
+    if(document.querySelector('.main-container.media-file')){
+        if(document.querySelector('.image-info .lightbox.modal')){
+            document.querySelector(".mobile.footer").style.display = "flex";
+        } else {document.querySelector(".mobile.footer").style.display = "none";}
     }
 
     function updateGalleryPadding() {
@@ -241,11 +284,6 @@ function init() {
         }
     }
 
-    // overflown filter
-    function isOverflown(element) {
-        return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-    }
-
     //Get URL for filtering
     if(document.querySelector('.extra-info.filters')){
         let tags = document.querySelectorAll('.filters .tag');
@@ -257,19 +295,13 @@ function init() {
             const filterGroup = tag.parentElement;
             const allTag = filterGroup.querySelector('.tag.all');
             if (tag === allTag) {
-                // Deselect all other tags
-                const otherTags = filterGroup.querySelectorAll('.tag:not(.all)'); // Get all tags except "all"
-                otherTags.forEach(otherTag => otherTag.classList.remove('active')); // Remove 'active' from all other tags
-
-                // Ensure "all" is active
+                const otherTags = filterGroup.querySelectorAll('.tag:not(.all)'); 
+                otherTags.forEach(otherTag => otherTag.classList.remove('active'));
                 allTag.classList.add('active');
             } else {
-                // If "all" is active and another tag is selected, deactivate "all"
                 if (allTag) { allTag.classList.remove('active');}
-                // Toggle the 'active' class on the clicked tag
                 tag.classList.toggle('active');
 
-                // If no tags are active in the group, re-activate "all"
                 const activeTags = filterGroup.querySelectorAll('.tag.active');
                 if (activeTags.length === 0) {
                     allTag.classList.add('active');

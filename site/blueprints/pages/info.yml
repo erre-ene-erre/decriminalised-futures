@@ -1,25 +1,37 @@
 Title: Info
 
-sections:
-  content:
-    type: fields
-    fields:
-      info:
-        label: Text Content
-        type: writer
-        toolbar:
-          inline: false
-        marks:
-          - bold
-          - italic
-          - underline
-          - link
-          - email
-          - sub
-          - sup
-          - clear
-          - code
-        nodes:
-          - paragraph
-          - bulletList
-          - orderedList
+columns:
+  - width: 1/2
+    sections:
+      content:
+        type: fields
+        fields:
+          info:
+            label: Text Content
+            type: writer
+            toolbar:
+              inline: false
+            marks:
+              - bold
+              - italic
+              - underline
+              - link
+              - email
+              - sub
+              - sup
+              - clear
+              - code
+            nodes:
+              - paragraph
+              - bulletList
+              - orderedList
+  - width: 1/2
+    sections:
+      documents:
+        type: files
+        template: text-file
+        image: false
+        help: |
+          Drag and drop it wherever in the text you want it (it only accepts .pdf and .docx files)
+          If you want it with the "special" styling you need to wrap the link inside the following code:
+          "div class='pdf-button'" link "/div"

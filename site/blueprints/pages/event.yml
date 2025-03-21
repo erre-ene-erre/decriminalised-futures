@@ -2,6 +2,18 @@ Title: Event
 num: '{{ page.datestart.toDate("Ymd") }}'
 
 columns:
+  - width: 1/1
+    sections:
+      notes:
+        type: fields
+        fields:
+          note:
+            type: info
+            label: Please note
+            text: |
+              When uploading files or naming tags please be aware that most special characters will caouse errors on the pages.
+              Such as: "/", ".", "@", ",", "#", "&", "(", ")"
+              Please stick to alphanumeric values if possible.
   - width: 1/2
     sections:
       information:
@@ -28,18 +40,19 @@ columns:
             type: tags
             width: 1/2
             options: query
-            query: page.siblings.pluck("type", ",", true)
+            query: kirby.collection("type-tags")
           series:
             type: tags
             width: 1/2
             options: query
-            query: page.siblings.pluck("series", ",", true)
+            query: kirby.collection("series-tags")
           subject:
             label: Subject(s)
             type: tags
+            sort: true
             width: 1/2
             options: query
-            query: page.siblings.pluck("subject", ",", true)
+            query: kirby.collection("subject-tags")
           highlight:
             label: Modal Highlight
             type: writer
@@ -75,6 +88,7 @@ columns:
               - sub
               - sup
               - clear
+              - code
             nodes:
               - heading
               - paragraph

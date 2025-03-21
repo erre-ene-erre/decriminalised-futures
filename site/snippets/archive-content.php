@@ -15,7 +15,6 @@
     $selectedTypes = normalizeTags(explode('+', $typesParam));
     $events = $events->filter(fn($child) => 
         count(array_intersect($selectedTypes, normalizeTags($child->type()->split(',')))) > 0
-        // count(array_intersect($selectedTypes, normalizeTags(explode(',', Str::replace($child->type()->value() ?? '', ' ', '-'))))) > 0
         );
     }
     // Filter by series - match all selected series strictly with normalization
@@ -23,7 +22,6 @@
         $selectedSeries = normalizeTags(explode('+', $seriesParam));
         $events = $events->filter(fn($child) => 
             count(array_intersect($selectedSeries, normalizeTags($child->series()->split(',')))) > 0
-            // count(array_intersect($selectedSeries, normalizeTags(explode(',', Str::replace($child->series()->value() ?? '', ' ', '-'))))) > 0
         );
     }
     // Filter by subjects - match all selected subjects strictly with normalization
@@ -31,7 +29,6 @@
         $selectedSubjects = normalizeTags(explode('+', $subjectsParam));
         $events = $events->filter(fn($child) => 
             count(array_intersect($selectedSubjects, normalizeTags($child->subject()->split(',')))) > 0
-            // count(array_intersect($selectedSubjects, normalizeTags(explode(',', Str::replace($child->subject()->value() ?? '', ' ', '-'))))) > 0
         );
     }
 ?>
@@ -61,22 +58,20 @@
         <?php endforeach ?>
     <?php endif ?>
 </section>
-<section class='extra-info filters'>
+<section class='extra-info modal filters'>
     <?php 
         $selectedYears = param('year') ? explode('+', param('year')) : [];
         $selectedTypes = param('type') ? explode('+', param('type')) : [];
         $selectedSeries = param('series') ? explode('+', param('series')) : [];
         $selectedSubjects = param('subject') ? explode('+', param('subject')) : [];
 
-        // $typetags = $kirby -> collection('all-events') -> pluck('type', ',', true);
-        $typetags = $events -> pluck('type', ',', true);
-        // $seriestags = $kirby -> collection('all-events') -> pluck('series', ',', true);
+        // $typetags = $events -> pluck('type', ',', true);
+        $typetags = array_map('strval', $events->pluck('type', ',', true));
         $seriestags = $events -> pluck('series', ',', true);
-        // $subjecttags = $kirby -> collection('all-events') -> pluck('subject', ',', true);
         $subjecttags = $events -> pluck('subject', ',', true);
-        sort($typetags);
-        sort($seriestags);
-        sort($subjecttags);
+        natcasesort($typetags);
+        natcasesort($seriestags);
+        natcasesort($subjecttags);
     ?>
     <table class='filters'>
         <tr>
