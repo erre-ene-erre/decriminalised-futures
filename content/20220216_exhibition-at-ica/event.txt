@@ -14,7 +14,7 @@ Dateend: 2024-12-13
 
 ----
 
-Type: Exhibition
+Type: exhibition
 
 ----
 
@@ -22,7 +22,7 @@ Series:
 
 ----
 
-Subject: Art, Publication, Film, Reading
+Subject: publication, film, reading, art
 
 ----
 
