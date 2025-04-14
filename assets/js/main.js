@@ -266,11 +266,20 @@ function init() {
     }
 
     // LIGHTBOX FUNCTIONS
-    if(document.querySelector('.main-container.media-file')){
-        if(document.querySelector('.image-info .lightbox.modal')){
-            document.querySelector(".mobile.footer").style.display = "flex";
-        } else {document.querySelector(".mobile.footer").style.display = "none";}
-    }
+    if ( document.querySelector(".main-container.media-file")){
+        function captionCheck(){
+            if(window.matchMedia("(max-width: 750px)").matches){
+                if (document.querySelector(".image-info .lightbox.modal")) {
+                   document.querySelector(".mobile.footer").style.display = "flex";
+                } else {
+                   document.querySelector(".mobile.footer").style.display = "none";
+                }
+            }
+        }
+        captionCheck()
+        window.addEventListener("resize", captionCheck);
+    } 
+    
 
     function updateGalleryPadding() {
         let gallery = document.querySelector('.gallery');

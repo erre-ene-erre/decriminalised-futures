@@ -37,6 +37,27 @@ return [
             if ($newFilename !== $file -> filename()) {
                 $file->changeName($newName);
             }
+        },
+        'page.update:after' => function ($newPage, $oldPage) {
+            $fields = ['subject', 'series', 'type']; // Add any tag fields you want to normalize
+
+            $updates = [];
+
+            foreach ($fields as $field) {
+                if ($newPage->content()->get($field)->isNotEmpty()) {
+                    // Split tags, lowercase, trim, remove duplicates
+                    $normalized = array_unique(array_map(function ($tag) {
+                        return mb_strtolower(trim($tag));
+                    }, $newPage->content()->get($field)->split(',')));
+
+                    // Recombine into comma-separated string
+                    $updates[$field] = implode(', ', $normalized);
+                }
+            }
+
+            if (!empty($updates)) {
+                $newPage->update($updates);
+            }
         }
     ]
 ];

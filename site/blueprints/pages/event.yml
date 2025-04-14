@@ -9,11 +9,17 @@ columns:
         fields:
           note:
             type: info
-            label: Please note
+            label: Notes to Editors
             text: |
-              When uploading files or naming tags please be aware that most special characters will caouse errors on the pages.
+              ** Naming Files **
+              When uploading files or naming tags please be aware that most special characters will cause errors on the pages.
               Such as: "/", ".", "@", ",", "#", "&", "(", ")"
               Please stick to alphanumeric values if possible.
+
+              ** Steps for adding PDF Buttons **
+              - Add the PDF as a file link by dragging the file to the "Content" section
+              - Add the following code before the link: ``` <div class="pdf-button"> ```
+              - Add the following code after the link: ```</div>```
   - width: 1/2
     sections:
       information:

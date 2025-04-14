@@ -2,11 +2,20 @@
 
 return function ($site) {
     $subjects = $site->index()->pluck('subject', ',', true);
+    $normalizedSubjects = array_map('mb_strtolower', $subjects);
+    
+    $uniqueSubjects = array_unique($normalizedSubjects);
 
-    $filteredSubjects = array_filter($subjects, function ($subject) use ($site) {
-        return $site->index()->filterBy('subject', '*=', $subject)->count() > 0;
-    });
-
-    natcasesort($subjects); // Natural case-insensitive sorting
-    return array_values($subjects); // Ensure it's a proper indexed array
+$usedSubjects = [];
+    foreach ($uniqueSubjects as $subject) {
+        foreach ($site->index() as $page) {
+            $pageTags = array_map('mb_strtolower', $page->subject()->split(','));
+            if (in_array($subject, $pageTags)) {
+                $usedSubjects[] = $subject;
+                break;
+            }
+        }
+    }
+    natcasesort($usedSubjects);
+    return array_values($usedSubjects);
 };

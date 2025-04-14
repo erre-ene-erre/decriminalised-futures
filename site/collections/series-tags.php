@@ -2,11 +2,20 @@
 
 return function ($site) {
     $series = $site->index()->pluck('series', ',', true);
+    $normalizedSeries = array_map('mb_strtolower', $series);
+    $uniqueSeries = array_unique($normalizedSeries);
 
-    $filteredSeries = array_filter($series, function ($serie) use ($site) {
-        return $site->index()->filterBy('series', '*=', $serie)->count() > 0;
-    });
-
-    natcasesort($series); // Natural case-insensitive sorting
-    return array_values($series); // Ensure it's a proper indexed array
+    $usedSeries = [];
+    foreach ($uniqueSeries as $serie) {
+        foreach ($site->index() as $page) {
+            $pageTags = array_map('mb_strtolower', $page->series()->split(','));
+            if (in_array($serie, $pageTags)) {
+                $usedSeries[] = $serie;
+                break;
+            }
+        }
+    }
+    natcasesort($usedSeries);
+    return array_values($usedSeries);
 };
+
