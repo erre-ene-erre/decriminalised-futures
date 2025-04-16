@@ -56,4 +56,6 @@ Icon
 # Environment files
 .env
 
+# Composer
+vendor/
 
