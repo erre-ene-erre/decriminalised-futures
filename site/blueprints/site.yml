@@ -12,6 +12,18 @@ columns:
             buttons: false
             help: 
               en: This description is what appears in Google search.
+          introtext:
+            label: Landing Page Text
+            type: textarea
+            buttons: false
+            max: 150
+      coverimage:
+        type: files
+        label: Landing Page Images
+        template: background-cover
+        layout: cards
+        help:
+          One of them will be chosen at random with every vist.
   - width: 1/2
     sections:
       generals:

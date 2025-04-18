@@ -1,4 +1,4 @@
-<?php if($page -> isHomePage() or $page -> template() == 'search'): ?>
+<?php if($page -> isHomePage() or $page -> template() == 'search' or $page -> template() == "currently"): ?>
 <?php else: ?>
     <footer class='mobile footer'>
         <?php if($page -> template() == 'archive'): ?>
@@ -16,7 +16,7 @@
     <script src="https://unpkg.com/@swup/fragment-plugin@1"></script>
         <script>
             let gotoURL, redirect;
-            <?php if($kirby->collection('current-events')->isEmpty() && $page -> isHomePage()): ?>
+            <?php if($kirby->collection('current-events')->isEmpty() && $page -> template() == "currently"): ?>
             gotoURL = '<?= page('archive')->url() ?>';
             redirect = true;
             <?php endif ?>

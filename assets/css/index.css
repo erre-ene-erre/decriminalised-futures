@@ -241,7 +241,7 @@ content .info h2 {
 header{
     display: flex;
     position: sticky;
-    z-index: 1;
+    z-index: 2;
     justify-content: space-between;
     align-items: center;
     margin: 0;
@@ -275,6 +275,12 @@ header:not(.home):before{
 /* Home header */
 header.home .logo{width: 45vw;}
 header.home h1 {margin: var(--margin);}
+
+/* Currently header */
+.header.currently{
+    z-index: 1;
+    position: fixed;
+}
 
 /* Accessibility button */
 .menu-button.accessibility {
@@ -389,6 +395,7 @@ table.accessibility button {
 }
 table.accessibility button.disabled{opacity: 0.4; pointer-events: none;}
 table.accessibility button:hover{font-weight: bold;}
+
 /* MAIN CONTAINER */
 .main-container{ margin: 0 var(--margin);}
 .extra-info{
@@ -397,6 +404,32 @@ table.accessibility button:hover{font-weight: bold;}
     width: calc((100vw / 3) - (var(--margin) * 2));
     max-width: 450px;
     scrollbar-width: none;
+}
+
+/* -----Landing */
+.current.landing {
+    position: fixed;
+    min-width: 80vw;
+    top: 0;
+    pointer-events: none;
+}
+.text.landing {
+    max-width: 50vw;
+    right: 0;
+    position: fixed;
+}
+.text.landing *{
+    font-size: 2rem;
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    filter:
+        drop-shadow(1px 1px 5px var(--background)) 
+        drop-shadow(1px -1px 5px var(--background)) 
+        drop-shadow(-1px 1px 5px var(--background)) 
+        drop-shadow(-1px -1px 5px var(--background));
 }
 
 /* -----Home */
@@ -421,26 +454,34 @@ header.home {align-items: flex-start; background-color: transparent;}
 .bottom.home a:hover svg{fill: var(--highlight-one);}
 .bottom.home h1{margin: 0;}
 
-.content.home{
-    display: flex; 
-    min-width: 100vw;
-    height: 100vh;
+.conten.home,
+.content.currently{
+    display: flex;
     position: fixed;
-    top: 0;
     left: 0;
     overflow-x: scroll;
     overflow-y: clip;
     scrollbar-width: none;
+}
+.content.home{
+    min-width: 100vw;
+    height: 100vh;
+    top: 0;  
+}
+.content.currently{
+    height: calc(100vh - 65px);
+    bottom: 0;
+    width: 100vw;
 }
 
 .current {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 100%;
+    min-width: 50vw;
     position: relative;
 }
-.current:not(:first-child){margin-left: -35%;}
+.current:not(:first-child){margin-left: -15%;}
 .current h2 {
     position: absolute;
     margin-top: var(--margin);
@@ -462,7 +503,7 @@ header.home {align-items: flex-start; background-color: transparent;}
 .current:nth-child(odd) .star-outline {stroke: var(--highlight-one); fill: none;}
 .current:nth-child(even) .star-outline {stroke: var(--highlight-two); fill: none;}
 
-.current:hover{
+.current:not(.landing):hover{
     z-index: 2; 
     color: inherit;
 }
@@ -493,6 +534,7 @@ a.event {
     display: flex;
 }
 a.current .icon, a.event .icon {width: 100%;}
+a.current .icon{height: 100vh;}
 a.current .icon image, a.event .icon image {width: 100%;}
 a.event .icon image {
     x: -25%;
@@ -902,7 +944,8 @@ html.is-animating .transition-fade {
     .search-button .icon {width: 35px;}
     .bottom.home .menu-button.accessibility * { font-size: 1.2rem;}
     .menu-button.accessibility{text-align: center;}
-    .content.home{
+    .content.home,
+    .content.currently{
         flex-direction: column;
         padding: 30% 0;
         overflow-x: clip;
@@ -912,6 +955,21 @@ html.is-animating .transition-fade {
         margin-left: inherit;
         margin-top: -35%;
     }
+    .current.landing{
+        min-width: 100vw;
+        left: 0;
+        height: 100vh;
+    }
+    .text.landing {
+        max-width: initial;
+        margin: 0 var(--margin);
+        height: 100vh;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .text.landing * {font-size: 1.3rem;}
     .bottom.home a {max-width: 50%;}
     .event .content, 
     .archive .content.all-events,
@@ -922,6 +980,7 @@ html.is-animating .transition-fade {
     .archive .content.all-events
     {justify-content: center;}
     a.event {width: 210px;}
+    a.current .icon{height: inherit;}
     .extra-info{
         width: calc(100vw - (var(--margin) * 2));
         height: calc(var(--margin) * 3) !important;
@@ -1020,6 +1079,7 @@ html.is-animating .transition-fade {
 
 /* Specific styles for landscape mode on mobile */
 @media screen and (max-width: 750px) and (orientation: landscape) {
+    header.home .logo{ width: 50vw;}
     .extra-info{max-width: none;}
     .extra-info.open{max-height: 55vh;}
     header ul.menu { flex-direction: row; flex-wrap: wrap; gap: 0 30px; justify-content: space-around;}
@@ -1027,6 +1087,8 @@ html.is-animating .transition-fade {
     .info-content.text { max-width: 90vw;}
     .gallery{height: 60vh;}
     .scroll-arrow {bottom: 30%;}
+    a.current .icon{width: 50vw;}    
+    a.current:not(:first-child){margin-top: -20%;}
     .event .content .info{font-size: 0.8rem;}
     .extra-info .bordered.highlight{font-size: 0.6rem;}   
     .info-content .image-navigation{padding-top: var(--margin);}

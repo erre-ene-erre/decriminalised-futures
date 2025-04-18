@@ -1,10 +1,6 @@
 
 <header class='header home'>
-<h1>    
-<?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
-    Current / Upcoming
-<?php endif ?>
-</h1>
+<div> </div>
     <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9">
         <g class='letters'>
           <path d="M48.49,63.83H0v-20.63L28.48,14.81h7.58V0h12.43v63.83ZM36.06,26.89h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>
@@ -35,34 +31,37 @@
 </header>
 
 <section class='content home'>
-    <?php foreach($kirby -> collection('current-events') as $current): ?>
-         <a class='current' href='<?= $current -> url() ?>'>
-            <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15">
-                <?php if($current->images()->template('cover-icon')->isNotEmpty()): ?>
-                <mask id="svgmask">
-                <path class="star-m" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
-                </mask>
-                <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $current ->images() ->template('cover-icon') ->first() ->crop(1000) -> url() ?>" mask="url(#svgmask)"></image>
-                <path class="star-outline" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
-                <?php else: ?>
-                <path class="star" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
-                <?php endif ?>
-            </svg>
-            <h2><?= $current -> title()?></h2>
-        </a> 
-    <?php endforeach ?>
+    <?php if($site -> files() -> template('background-cover') -> isNotEmpty()): ?>
+    <?php $image = $site -> files() -> template('background-cover') -> random() -> first() -> crop(1000) -> url() ?>
+    <div class="current landing">
+        <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15">
+            <mask id="svgmask">
+            <path class="star-m" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
+            </mask>
+            <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $image ?>" mask="url(#svgmask)"></image>
+            <path class="star-outline" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
+        </svg>
+    </div>
+    <?php endif ?>
+
+    <div class='text landing'>
+        <?= $site -> introtext() -> kt() ?>
+    </div>
 </section>
 
-<?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
+<?php 
+    if($kirby -> collection('current-events') -> isNotEmpty()){
+        $link = page('currently') -> url();
+    } else{
+        $link = page('archive') -> url();
+    }
+?>
 <section class='bottom home'>
-    <div class='menu-button accessibility'><h2>Accessibility</h2></div>
-    <a href='<?= page('archive') -> url() ?>'>
-        <h1>Archive</h1>
+    <div></div>
+    <a href='<?= $link ?>'>
+        <h1>Enter</h1>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17">
             <path d="M9.8,130.17s-.37-57.63,65.12-65.09c0,0-62.51-2.18-65.12-65.09L3.17,33.04c-4.21,20.96-4.22,42.55-.05,63.51l6.68,33.62Z"/>
         </svg> 
     </a>
 </section>
-<?php else: ?>
-    <div class='menu-button accessibility' style='display:none;'><h2>Accessibility</h2></div>
-<?php endif ?>

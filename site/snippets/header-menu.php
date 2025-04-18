@@ -1,8 +1,8 @@
 <header id ='menu' data-swup-fragment-url="/">
 <div class='showMenu mobile'><h2>MENU</h2></div>
 <ul class='menu'>
-    <?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
-    <li class='menu-button'><a href='<?= $site -> url() ?>'><h2>Home</h2></a></li>
+  <?php if($kirby -> collection('current-events') -> isNotEmpty()): ?>
+    <li class='menu-button'><a href='<?= page('currently') -> url() ?>'><h2>Upcoming</h2></a></li>
     <?php endif ?>
     <li class='menu-button'><a href='<?= page('archive') -> url() ?>'><h2>Archive</h2></a></li>
     <?php foreach($site -> children() -> template('info') -> listed() as $menuItem): ?>
