@@ -42,7 +42,6 @@
                     $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
                     $videoW = $image -> videowidth() ?? 560;
                     $videoW = $isMob ? $videoW -> toFloat() * 0.6 : $videoW; 
-
                 ?>
                 <figure style="margin:0">
                     <iframe class="gallery-item" 

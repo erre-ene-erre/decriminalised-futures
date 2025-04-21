@@ -18,7 +18,11 @@ Type: public lecture
 
 ----
 
-Subject: criminalisation, UK
+Series: 
+
+----
+
+Subject: criminalisation, uk
 
 ----
 
@@ -26,7 +30,7 @@ Highlight: <p>A History of Sex Work Criminalisation was the first session in the
 
 ----
 
-Textcontent: <p><em>Lady of the Night School was a two part course that ran for three months between October to December 2021, and again between April to June 2022. Each month we collectively explored a new topic. The focus was less on current legislations and campaigns, and more at how we got where we are today.</em></p><h2>A History of Sex Work Criminalisation (October 2021)</h2><p>This session examined the ways commercial sex was criminalised in Britain and the effects this had in the 19th and 20th centuries. We looked at relevant histories of trafficking and migration, and at early 20th century ‘decriminalisation’ campaigns.</p><p><em>Lecture</em> by Dr Julia Laite (Thursday 7th October, 7.00 – 8.30pm, online)</p><p><em>Seminar</em> by Alex Wanjiku Kelbert (Monday 18th October, 6.30 – 8.30pm, online)</p><p><strong><em><sub>Julia Laite</sub></em></strong><sub> is a Reader in Modern History and Director of the Raphael Samuel History Centre at at Birkbeck, University of London. She researches and teaches on the history of women, crime, sexuality and migration in the nineteenth and twentieth century British world and is the author of Common Prostitutes and Ordinary Citizens: Commercial Sex in London (2012) and (with Samantha Caslin) Wolfenden’s Women: A Critical Sourcebook (2020). Her latest book, The Disappearance of Lydia Harvey: A True Story of Sex, Crime and the Meaning of Justice, was published with Profile Books in April, 2021.</sub></p><p>To view a transcript of this lecture: </p><p><em><sub>This course is made possible with generous support from the Barry Amiel &amp; Norman Melburn Trust and the Rosa Luxemburg Foundation.</sub></em></p>
+Textcontent: <p><em>Lady of the Night School was a two part course that ran for three months between October to December 2021, and again between April to June 2022. Each month we collectively explored a new topic. The focus was less on current legislations and campaigns, and more at how we got where we are today.</em></p><h2>A History of Sex Work Criminalisation (October 2021)</h2><p>This session examined the ways commercial sex was criminalised in Britain and the effects this had in the 19th and 20th centuries. We looked at relevant histories of trafficking and migration, and at early 20th century ‘decriminalisation’ campaigns.</p><p></p><p>Weird unexplicable truths.</p><p><em>Lecture</em> by Dr Julia Laite (Thursday 7th October, 7.00 – 8.30pm, online)</p><p><em>Seminar</em> by Alex Wanjiku Kelbert (Monday 18th October, 6.30 – 8.30pm, online)</p><p><strong><em><sub>Julia Laite</sub></em></strong><sub> is a Reader in Modern History and Director of the Raphael Samuel History Centre at at Birkbeck, University of London. She researches and teaches on the history of women, crime, sexuality and migration in the nineteenth and twentieth century British world and is the author of Common Prostitutes and Ordinary Citizens: Commercial Sex in London (2012) and (with Samantha Caslin) Wolfenden’s Women: A Critical Sourcebook (2020). Her latest book, The Disappearance of Lydia Harvey: A True Story of Sex, Crime and the Meaning of Justice, was published with Profile Books in April, 2021.</sub></p><p>To view a transcript of this lecture: </p><p><em><sub>This course is made possible with generous support from the Barry Amiel &amp; Norman Melburn Trust and the Rosa Luxemburg Foundation.</sub></em></p>
 
 ----
 

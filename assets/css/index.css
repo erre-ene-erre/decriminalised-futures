@@ -62,11 +62,12 @@ h3, a{
     font-weight: 200;
     font-style: italic;
 }
-h3.strong{
+h3.strong, .snippet strong{
     font-family: "IBM Plex Mono", monospace;
     font-weight: 600;
     font-style: italic;
 }
+
 a {color: inherit; text-decoration: none; transition: all 0.2s;}
 a:not(:has(sub)) { text-decoration: underline;}
 a sub { text-decoration: none;}
@@ -803,20 +804,35 @@ a.event:hover{color: inherit;}
     justify-content: space-between;
     pointer-events: none;
 }
-.info-content .image-navigation span{min-width: 25px;}
+.info-content .image-navigation span{min-width: 25px; flex-shrink: 0;}
 .info-content figure.lightbox{
     margin: 0; 
     align-items: center;
     display: flex;
     flex-direction: column;
+    max-width: 60vw;
+    width: min-content;
 }
 .info-content.lightbox img{
     width: fit-content;
+    height: auto;
+    display: block;
     max-height: calc(100vh - 60px);
     max-width: 60vw;
     border: 3px solid var(--highlight-one);
 }
-.info-content.lightbox figcaption{line-height: 1;}
+.info-content iframe.lightbox{
+    border: 3px solid var(--highlight-one);
+    height: fit-content;
+    min-height: 315px;
+}
+.info-content.lightbox figcaption{
+    line-height: 1;
+    display: block;
+  max-width: 100%;
+  word-wrap: break-word;
+  text-align: center;
+}
 .info-content.lightbox figcaption p {margin: 5px 0;}
 .info-content.lightbox .bordered{
     scrollbar-width: none;
@@ -1044,6 +1060,10 @@ html.is-animating .transition-fade {
     .info-content.lightbox {flex-direction: column; }
     .info-content .image-navigation {width: 100vw; padding-top: 100px;}
     .info-content figure.lightbox { max-width: calc(100vw - (var(--margin)*2)); min-width: auto;}
+    .info-content iframe.lightbox {
+        max-width: fit-content;
+        min-height: auto;
+    }
     .info-content.lightbox figcaption {font-size: 0.9rem; line-height: 1.4;}
     .info-content.lightbox .bordered { 
         max-width: calc(100vw - (var(--margin)*2)); 
@@ -1093,6 +1113,7 @@ html.is-animating .transition-fade {
     .extra-info .bordered.highlight{font-size: 0.6rem;}   
     .info-content .image-navigation{padding-top: var(--margin);}
     .info-content figure.lightbox {height: auto;}
+    .info-content iframe.lightbox { min-height: 180px;}
     .info-content.lightbox figcaption { font-size: 9px;}
     .info-content.lightbox .close{ align-self: flex-end;}
     .lightbox .close *{width: 30px;}

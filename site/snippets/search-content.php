@@ -3,21 +3,25 @@
 <?php if($results -> isNotEmpty()): ?>
 <ul class='search-results'>
   <?php foreach ($results as $result): ?>
+
+
     <?php
-        $content = ($result->info()->value() ?? '') . '' .
+        $rawContent = ($result->info()->value() ?? '') . '' .
                     ($result->highlight()->value() ?? '') . ' ' .
                     ($result->textcontent()->value() ?? '');
-        $position = stripos($content, $query);
+        $rawContent = preg_replace('/<code>&lt;.*?&gt;<\/code>/is', '', $rawContent);        $cleanContent = strip_tags($rawContent);
+        $position = stripos($cleanContent, $query);
+
         $wordsRange = 4;
         if ($position !== false) {
-            $words = preg_split('/\s+/', $content);
-            $charactersUpToPosition = substr($content, 0, $position);
+            $words = preg_split('/\s+/', $cleanContent);
+            $charactersUpToPosition = substr($cleanContent, 0, $position);
             // $wordIndex = str_word_count($charactersUpToPosition);
             $wordIndex = count(preg_split('/\s+/', $charactersUpToPosition));
             $startWordIndex = max(0, $wordIndex - $wordsRange);
             $endWordIndex = min(count($words) - 1, $wordIndex + $wordsRange);
 
-            $snippetWords = array_slice($words, $startWordIndex, $endWordIndex - $startWordIndex);
+            $snippetWords = array_slice($words, $startWordIndex, $endWordIndex - $startWordIndex + 1);
             $snippet = implode(' ', $snippetWords);
             $snippet = preg_replace('/(' . preg_quote($query, '/') . ')/i', '<strong>$1</strong>', $snippet);
         } else{
@@ -36,6 +40,8 @@
     <?php elseif($result -> template() =='media-file'): ?>
         <span>[image]</span>
     <?php endif ?>
+
+
   </li>
   <?php endforeach ?>
 </ul>

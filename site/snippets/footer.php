@@ -21,6 +21,6 @@
             redirect = true;
             <?php endif ?>
         </script>
-    <?= js('/assets/js/main.js?v=1.2.7') ?>
+    <?= js('/assets/js/main.js?v=1.2.8') ?>
 </body>
 </html>

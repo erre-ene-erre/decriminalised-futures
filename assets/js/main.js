@@ -252,17 +252,22 @@ function init() {
          }
          updateArrowVisibility();
 
-         let fancyLinks = document.querySelectorAll('.info .pdf-button a');
-         fancyLinks.forEach(link => {
-            link.insertAdjacentHTML('beforebegin', '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42"><path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/> <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/></svg>');
-         })
-
          // Event listeners
          gallery.addEventListener("scroll", handleScroll);
          window.addEventListener("resize", () =>{
             updateGalleryPadding;
             updateArrowVisibility;
          });
+    }
+
+    if(document.querySelector('.event-title')){
+        let fancyLinks = document.querySelectorAll(".info .pdf-button a");
+        fancyLinks.forEach((link) => {
+          link.insertAdjacentHTML(
+            "beforebegin",
+            '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42"><path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/> <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/></svg>'
+          );
+        });
     }
 
     // LIGHTBOX FUNCTIONS
@@ -274,7 +279,7 @@ function init() {
                 } else {
                    document.querySelector(".mobile.footer").style.display = "none";
                 }
-            }
+            } else { document.querySelector(".mobile.footer").style.display = "none";}
         }
         captionCheck()
         window.addEventListener("resize", captionCheck);

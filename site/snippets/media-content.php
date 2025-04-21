@@ -11,6 +11,26 @@
         </a>
         <?php endif ?>
         </span>
+        <!-- Video Figure -->
+        <?php if($image -> isVideo() ->toBool() === true):?>
+        <?php 
+            $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+            $videoW = $image -> videowidth() ?? 560;
+            $videoW = $isMob ? $videoW -> toFloat() * 0.6 : $videoW;
+        ?>
+        <figure style="margin:0">
+            <iframe class="lightbox" 
+                    width="<?=$videoW?>" 
+                    src="<?= $image -> videolink()?>" 
+                    frameborder="0" allowfullscreen>
+            </iframe>
+            <?php if($image ->caption() -> isNotEmpty()): ?>
+                <figcaption><?= $image -> caption() -> kt() ?></figcaption>
+            <?php endif ?>
+        </figure>
+        <!-- End of Video Figure -->
+        <?php else: ?>
+        <!-- Image figure -->
         <figure class='lightbox <?=$image -> orientation()?>'>
         <img 
             loading="lazy" 
@@ -26,6 +46,8 @@
             <figcaption><?= $image -> caption() -> kt() ?></figcaption>
         <?php endif ?>
         </figure>
+        <!-- End of Image Figure -->
+         <?php endif ?>
         <span class='next'>
         <?php if($page -> hasNextListed($collection)): ?>
             <a href='<?= $page -> nextListed($collection) -> url() ?>'>
