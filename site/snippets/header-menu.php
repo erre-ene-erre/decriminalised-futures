@@ -18,13 +18,7 @@
     </form>
     <li class='menu-button accessibility'><h2>Accessibility</h2></li>
 </ul>
-<?php 
-  if($kirby->collection('current-events')->isEmpty()){
-    $logoURL = page('archive') -> url();
-  }else{
-    $logoURL = $site -> url();
-  }
- ?> 
+<?php  $logoURL = $site -> url(); ?> 
 <a class='desktop' href='<?= $logoURL ?>'>
 <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9">
     <g class='letters'>

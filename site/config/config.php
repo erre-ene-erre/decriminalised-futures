@@ -59,6 +59,16 @@ return [
                 $newPage->update($updates);
             }
         }
+    ],
+    'routes' => [
+      [
+        'pattern' => 'sitemap.xml',
+        'action'  => function () {
+          // Load the sitemap page manually
+          $page = page('sitemap');
+          return $page->render([], ['contentType' => 'application/xml']);
+        }
+      ]
     ]
 ];
 ?>

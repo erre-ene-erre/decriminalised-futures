@@ -18,6 +18,21 @@
     <meta property="og:description" content="<?= $page->metadescription() -> or($site -> metadescription()) ?>">
     <meta property="og:url" content="<?= $site -> url() ?>">
 
+    <meta name="keywords" content="creative resistance, labour rights, advocacy, marginalised communities, decriminalisation">
+
+    <script type="application/ld+json">
+        <?= json_encode([
+          "@context" => "https://schema.org",
+          "@type" => "CreativeWork",
+          "name" => "Decriminalised Futures",
+          "description" => "A creative advocacy project by and for sex workers, using popular education and storytelling.",
+          "keywords" => "decriminalisation, creative resistance, community education, sex worker rights",
+          "creator" => [
+            "@type" => "Organization",
+            "name" => "Decriminalised Futures"
+          ]
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
+    </script>
     
     <?php if($page->isHomePage()): ?>
     <title> <?= $site->title() ?></title>
@@ -26,7 +41,7 @@
     <?php endif ?>
     <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
-    <?= css('/assets/css/index.css?v=1.3.2') ?>
+    <?= css('/assets/css/index.css?v=1.3.3') ?>
 </head>
 <body>
     <main id='swup' class=' transition-fade main-container <?= str_replace(' ', '-', $page -> template()) ?>' >

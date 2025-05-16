@@ -749,6 +749,7 @@ a.event:hover{color: inherit;}
   text-decoration-color: var(--highlight-two);
   -webkit-text-decoration-color: var(--highlight-two);
 }
+.pdf-button + p {min-height: 0 !important;}
 
 /* -----Info */
 #info-modal {
@@ -1107,6 +1108,7 @@ html.is-animating .transition-fade {
     .search-input{ width: 80%;}
     .info-content.text { max-width: 90vw;}
     .gallery{height: 60vh;}
+    iframe.gallery-item {width: 47vw;}
     .scroll-arrow {bottom: 30%;}
     a.current .icon{width: 50vw;}  
     .current.landing .icon{left: -50%; width: 100%;}  
@@ -1123,6 +1125,5 @@ html.is-animating .transition-fade {
     .lightbox .close *{width: 30px;}
     .info-content.lightbox img {
     width: auto;
-    max-width: 100%;
     max-height: calc(75vh - 60px);}
 }
