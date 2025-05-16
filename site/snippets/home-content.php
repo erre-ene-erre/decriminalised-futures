@@ -32,7 +32,7 @@
 
 <section class='content home'>
     <?php if($site -> files() -> template('background-cover') -> isNotEmpty()): ?>
-    <?php $image = $site -> files() -> template('background-cover') -> random() -> first() -> crop(1000) -> url() ?>
+    <?php $image = $site -> files() -> template('background-cover') -> random() -> first() -> crop(1080, 1080, 150) -> url() ?>
     <div class="current landing">
         <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15">
             <mask id="svgmask">

@@ -67,14 +67,18 @@ function init() {
         contrastType = localStorage.getItem("contrastType") || 'light',
         saturationType = localStorage.getItem("saturationType") || 'bright',
         lineHeight = parseFloat(localStorage.getItem("lineHeight")) || 1.4,
+        iconGap = parseFloat(localStorage.getItem("iconGap")) || 60,
         letterSpacing = parseFloat(localStorage.getItem("letterSpacing")) || 0;
+
 
     function updateLocalStorage() {
         localStorage.setItem("fontSize", fontSize);
         localStorage.setItem("contrastType", contrastType);
         localStorage.setItem("saturationType", saturationType);
         localStorage.setItem("lineHeight", lineHeight);
+        localStorage.setItem("iconGap", iconGap);
         localStorage.setItem("letterSpacing", letterSpacing);
+
     }
 
     function changeContrast(type) {
@@ -96,10 +100,10 @@ function init() {
             document.documentElement.style.setProperty('--highlight-one-gradient', '#fe4d4d80');
             document.documentElement.style.setProperty('--highlight-two-gradient', '#ec1bde80');
         } else if (type == 'muted') {
-            document.documentElement.style.setProperty('--highlight-one', '#5c2d2d');
-            document.documentElement.style.setProperty('--highlight-two', '#8f868e');
-            document.documentElement.style.setProperty('--highlight-one-gradient', '#5c2d2d80');
-            document.documentElement.style.setProperty('--highlight-two-gradient', '#8f868e80');
+            document.documentElement.style.setProperty('--highlight-two', '#c6bdc5');
+            document.documentElement.style.setProperty('--highlight-one', '#936464');
+            document.documentElement.style.setProperty('--highlight-two-gradient', '#c6bdc580');
+            document.documentElement.style.setProperty('--highlight-one-gradient', '#93646480');
         }
         contrastType = type;
         updateLocalStorage();
@@ -122,6 +126,11 @@ function init() {
                 increase = direction == 'up' ? Math.min(letterSpacing + increment, max) : Math.max(letterSpacing - increment, min);
                 document.documentElement.style.setProperty('--letter-spacing', `${increase}px`);
                 letterSpacing = increase;
+                break;
+            case 'gap':
+                increase = direction == 'up' ? Math.min(iconGap + increment, max) : Math.max(iconGap - increment, min);
+                document.documentElement.style.setProperty('--gap', `${increase}px`);
+                iconGap = increase;
                 break;
             default:
                 break;
@@ -163,8 +172,15 @@ function init() {
     contrastButtons.forEach(button => button.addEventListener('click', () => { changeContrast(button.dataset.value); }));
     saturationButtons.forEach(button => button.addEventListener('click', () => { changeSaturation(button.dataset.value); }));
     sizeButtons.forEach(button => button.addEventListener('click', () => { valueChange('size', 15, 20, 1, button.dataset.value); }));
-    heightButtons.forEach(button => button.addEventListener('click', () => { valueChange('height', 1.4, 2.2, 0.2, button.dataset.value); }));
-    spacingButtons.forEach(button => button.addEventListener('click', () => { valueChange('spacing', 0, 3, 1, button.dataset.value); }));
+    heightButtons.forEach(button => button.addEventListener('click', () => { 
+        valueChange('height', 1.4, 2.2, 0.2, button.dataset.value); 
+        valueChange('gap', 60, 124, 8, button.dataset.value); 
+    }
+    ));
+    spacingButtons.forEach(button => button.addEventListener('click', () => { 
+        valueChange('spacing', 0, 3, 1, button.dataset.value); 
+         valueChange("gap", 60, 124, 8, button.dataset.value); 
+    }));
 
     updateButtonStates();
 
@@ -177,15 +193,18 @@ function init() {
         saturationType = 'bright';
         lineHeight = 1.4;
         letterSpacing = 0;
+        iconGap = 60;
 
         document.documentElement.style.setProperty('--background', '#e6e6e6');
         document.documentElement.style.setProperty('--main', '#000');
         document.documentElement.style.setProperty('--highlight-one', '#fe4d4d');
         document.documentElement.style.setProperty('--highlight-two', '#ec1bde');
+        document.documentElement.style.setProperty('--highlight-one-gradient', '#fe4d4d80');
         document.documentElement.style.setProperty('--highlight-two-gradient', 'rgba(236, 27, 222, 0.5)');
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
         document.documentElement.style.setProperty('--line-height', lineHeight);
         document.documentElement.style.setProperty('--letter-spacing', `${letterSpacing}px`);
+        document.documentElement.style.setProperty('--gap', `${iconGap}px`);
 
         updateLocalStorage();
         updateButtonStates();
@@ -221,7 +240,7 @@ function init() {
     }
 
     //EVENTS FUNCTIONS
-    if(document.querySelector('.gallery')){
+    if(document.querySelector('.gallery') && document.querySelector('.mobile').style.display == 'none'){
         setTimeout(() => {
             updateGalleryPadding();
         }, 500);
@@ -289,7 +308,6 @@ function init() {
     function updateGalleryPadding() {
         let gallery = document.querySelector('.gallery');
         let firstImage = gallery.querySelector('.gallery-item');
-        console.log(firstImage.offsetWidth);
         if (firstImage) {
             const firstImageWidth = firstImage.offsetWidth;
             const padding = `0 calc(50vw - ${firstImageWidth / 2}px)`;
