@@ -454,7 +454,7 @@ header.home {align-items: flex-start; background-color: transparent;}
 }
 .bottom.home svg {width: 25px; fill: var(--main);}
 .bottom.home a:hover svg{fill: var(--highlight-one);}
-.bottom.home h1{margin: 0; font-size: 2.5rem;}
+.bottom.home h1{margin: 0; font-size: 3rem;}
 
 .conten.home,
 .content.currently{
