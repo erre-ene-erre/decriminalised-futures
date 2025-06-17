@@ -12,10 +12,10 @@
             </div>
             <div class='media-controllers'>
                 <div class='play-icon'>
-                    <svg class="play media-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103.09 119">
+                    <svg class="play media-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103.09 119" aria-label='play' role="graphics-symbol">
                         <polygon points="8.11 59.52 0 0 47.49 36.79 103.09 59.52 47.49 82.25 0 119.04 8.11 59.52"/>
                     </svg>
-                    <svg class="pause media-button hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.53 119">
+                    <svg class="pause media-button hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.53 119" aria-label='pause' role="graphics-symbol">
                         <polygon points="20.11 0 6.7 0 0 59.44 6.7 118.87 20.11 118.87 26.82 59.44 20.11 0"/>
                         <polygon points="54.83 .13 41.42 .13 34.71 59.56 41.42 119 54.83 119 61.53 59.56 54.83 .13"/>
                     </svg>
@@ -81,7 +81,7 @@
         <?php endif ?>
     <?php endforeach ?>
     <div class="scroll-arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17" role="graphics-symbol" aria-hidden="true">
             <path d="M9.8,130.17s-.37-57.63,65.12-65.09c0,0-62.51-2.18-65.12-65.09L3.17,33.04c-4.21,20.96-4.22,42.55-.05,63.51l6.68,33.62Z"/>
         </svg>
     </div>
@@ -98,7 +98,7 @@
 
 <section class='extra-info modal'>
 
-    <div class='<?= $page->highlight() -> isNotEmpty() ? 'bordered' : '' ?> highlight'>
+    <div class='<?= $page->highlight() -> isNotEmpty() ? 'bordered' : '' ?> highlight' tabindex='0'>
         <?= $page -> highlight() ?>
     </div>
     <table class='categories'>

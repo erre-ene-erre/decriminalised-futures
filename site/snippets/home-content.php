@@ -1,8 +1,10 @@
 
 <header class='header home'>
 <div> </div>
-    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9">
-        <g class='letters'>
+    <h1>
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 775.33 137.9" role="img" aria-label='logo' aria-description='decriminalised futures logo'>
+    <title>Decriminalised Futures logo</title>    
+    <g class='letters'>
           <path d="M48.49,63.83H0v-20.63L28.48,14.81h7.58V0h12.43v63.83ZM36.06,26.89h-2.12l-21.25,21.16v3.44h23.36v-24.6Z"/>
           <path d="M59.86,14.81h48.05v20.9l-15.43,15.52h15.52v12.7h-48.14V14.81ZM72.12,27.24v23.98h2.38l21.16-21.25v-2.73h-23.54Z"/>
           <path d="M167.42,51.14v12.7h-48.58v-20.81l28.12-28.21h20.45v12.7h-15.16l-21.16,21.25v2.38h36.32Z"/>
@@ -28,17 +30,20 @@
         <path class="star-1" d="M743.38,32.83s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
         <path class="star-2" d="M735.98,40.38s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
     </svg>
+    </h1>
 </header>
 
 <section class='content home'>
     <?php if($site -> files() -> template('background-cover') -> isNotEmpty()): ?>
-    <?php $image = $site -> files() -> template('background-cover') -> random() -> first() -> crop(1080, 1080, 150) -> url() ?>
+    <?php $image = $site -> files() -> template('background-cover') -> random() -> first() -> crop(1080, 1080, 150) ?>
     <div class="current landing">
-        <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15">
+        <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 787.16 781.15" role="img" aria-label="background" aria-description='landing page background image'>
             <mask id="svgmask">
             <path class="star-m" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
             </mask>
-            <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $image ?>" mask="url(#svgmask)"></image>
+            <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?= $image -> url() ?>" mask="url(#svgmask)">
+                <desc><?= $image -> alt() ?></desc>
+            </image>
             <path class="star-outline" d="M396.38,0S393.39,358.5,0,396.57c0,0,348.62-17.61,396.38,384.58,0,0-2.22-345.81,390.78-390.57,0,0-375.1-13.06-390.78-390.58Z"/>
         </svg>
     </div>
@@ -60,7 +65,7 @@
     <div></div>
     <a href='<?= $link ?>'>
         <h1>Enter</h1>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.92 130.17" role="graphics-symbol" aria-label='enter' aria-description='enter arrow icon'>
             <path d="M9.8,130.17s-.37-57.63,65.12-65.09c0,0-62.51-2.18-65.12-65.09L3.17,33.04c-4.21,20.96-4.22,42.55-.05,63.51l6.68,33.62Z"/>
         </svg> 
     </a>

@@ -40,13 +40,15 @@
         <?php foreach($events as $event): ?>
                 <a class='event' href='<?= $event -> url() ?>'>
                 <span><?= A::first($event->type()->split()) ?></span>
-                <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42">
+                <svg class='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.76 71.42" role="img" aria-label="background" aria-description='project background image'>
                         <path class="star-1" d="M39.81,0s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
                         <?php if($event->images()->template('cover-icon')->isNotEmpty()): ?>
                         <mask id="svgmask">
                         <path class="star-2" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
                         </mask>
-                        <image xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid slice" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> crop(250, 250, 72) -> url() ?>" mask="url(#svgmask)"></image>
+                        <image xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid slice" xlink:href="<?= $event ->images() ->template('cover-icon') ->first() -> crop(250, 250, 72) -> url() ?>" mask="url(#svgmask)">
+                            <desc><?= $event ->images() ->template('cover-icon') ->first() -> alt() ?></desc>
+                        </image>
                         <path class="star-outline" d="M32.41,7.55s-.24,29.31-32.41,32.42c0,0,28.5-1.44,32.41,31.44,0,0-.18-28.27,31.95-31.93,0,0-30.67-1.07-31.95-31.93Z"/>
 
                         <?php else: ?>

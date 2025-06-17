@@ -107,6 +107,7 @@ button, .mc-button {
 
 button h2 {margin: 5px var(--margin);}
 button:hover, .mc-button:hover{cursor: pointer; background-color: var(--highlight-one); color: var(--background);}
+em{ font-size: 1.2rem;}
 
 /* INPUT STYLING FOR MOVING MEDIA FILES */
 input[type=range]{background-color: var(--background);}
@@ -254,6 +255,7 @@ header{
 }
 header ul.menu{display: flex; gap: calc(var(--margin) * 2); margin: 0 var(--margin);}
 header .menu-button a {text-decoration: none;}
+header h1.menu-title{margin: 0; line-height: 1;}
 header .logo{width: 225px; margin: 10px var(--margin);}
 header .logo .letters path, header .logo .letter{ fill: var(--main);}
 header .logo .star-1, .event .icon .star-1{fill: var(--highlight-two);}
@@ -276,7 +278,7 @@ header:not(.home):before{
 
 /* Home header */
 header.home .logo{width: 45vw;}
-header.home h1 {margin: var(--margin);}
+header.home h1 {margin: 0;}
 
 /* Currently header */
 .header.currently{
@@ -313,6 +315,7 @@ header.home h1 {margin: var(--margin);}
     gap: var(--margin);
     flex-wrap: wrap;
 }
+.search-form {align-items: flex-end; margin-top: 3px;}
 .search-input, #mce-EMAIL {
     border: none;
     border-bottom: 2.5px solid var(--main);

@@ -1,7 +1,5 @@
 <?php snippet('header') ?>
 
-<?php snippet('archive-content') ?>
-
 <section id='info-modal'>
     <div class='info-content text'>
          <?php
@@ -11,5 +9,7 @@
         ?>
     </div>
 </section>
+
+<?php snippet('archive-content') ?>
 
 <?php snippet('footer') ?>
