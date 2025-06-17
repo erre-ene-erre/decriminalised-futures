@@ -3,6 +3,7 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Exception as GlobalException;
 use Generator;
 use Kirby\Data\Data;
 use Kirby\Email\Email as BaseEmail;
@@ -318,9 +319,18 @@ class App
 			}
 		}
 
-		foreach (glob($this->root('blueprints') . '/' . $type . '/*.yml') as $blueprint) {
-			$name = F::name($blueprint);
-			$blueprints[$name] = $name;
+		try {
+			// protect against path traversal attacks
+			$root     = $this->root('blueprints') . '/' . $type;
+			$realpath = Dir::realpath($root, $this->root('blueprints'));
+
+			foreach (glob($realpath . '/*.yml') as $blueprint) {
+				$name = F::name($blueprint);
+				$blueprints[$name] = $name;
+			}
+		} catch (GlobalException) {
+			// if the realpath operation failed, the following glob was skipped,
+			// keeping just the blueprints from extensions
 		}
 
 		ksort($blueprints);
@@ -478,7 +488,7 @@ class App
 		}
 
 		// controller from site root
-		$controller   = Controller::load($this->root('controllers') . '/' . $name . '.php');
+		$controller   = Controller::load($this->root('controllers') . '/' . $name . '.php', $this->root('controllers'));
 		// controller from extension
 		$controller ??= $this->extension('controllers', $name);
 
@@ -1184,7 +1194,7 @@ class App
 		string|null $path = null,
 		string|null $method = null
 	): Response|null {
-		if (($_ENV['KIRBY_RENDER'] ?? true) === false) {
+		if ((filter_var($_ENV['KIRBY_RENDER'] ?? true, FILTER_VALIDATE_BOOLEAN)) === false) {
 			return null;
 		}
 
@@ -1292,11 +1302,36 @@ class App
 
 		// try to resolve image urls for pages and drafts
 		if ($page = $site->findPageOrDraft($id)) {
-			return $page->file($filename);
+			return $this->resolveFile($page->file($filename));
 		}
 
 		// try to resolve site files at least
-		return $site->file($filename);
+		return $this->resolveFile($site->file($filename));
+	}
+
+	/**
+	 * Filters a resolved file object using the configuration
+	 * @internal
+	 */
+	public function resolveFile(File|null $file): File|null
+	{
+		// shortcut for files that don't exist
+		if ($file === null) {
+			return null;
+		}
+
+		$option = $this->option('content.fileRedirects', true);
+
+		if ($option === true) {
+			return $file;
+		}
+
+		if ($option instanceof Closure) {
+			return $option($file) === true ? $file : null;
+		}
+
+		// option was set to `false` or an invalid value
+		return null;
 	}
 
 	/**

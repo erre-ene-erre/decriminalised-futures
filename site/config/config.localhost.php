@@ -59,6 +59,37 @@ return [
                 $newPage->update($updates);
             }
         }
-    ]
+    ],
+    'bnomei.securityheaders.enabled' => true,
+    'bnomei.securityheaders.setter' => function ($instance) {
+        /** @var ParagonIE\CSPBuilder\CSPBuilder $csp */
+        $csp = $instance->csp();
+
+        // YouTube
+        $csp->addSource('frame', 'https://www.youtube.com');
+        $csp->addSource('frame', 'https://youtube.com');
+        $csp->addSource('image', 'https://*.ytimg.com');
+        $csp->addSource('script', 'https://*.youtube.com');
+
+        // Vimeo
+        $csp->addSource('frame', 'https://player.vimeo.com');
+        $csp->addSource('script', 'https://f.vimeocdn.com');
+        $csp->addSource('style', 'https://f.vimeocdn.com');
+        $csp->addSource('image', 'https://i.vimeocdn.com');
+
+        // Mailchimp forms (adjust these based on exact embed code)
+        $csp->addSource('script', 'https://*.mailchimp.com');
+        $csp->addSource('frame', 'https://*.mailchimp.com');
+        $csp->addSource('connect', 'https://*.mailchimp.com');
+        $csp->addSource('form-action', 'https://*.mailchimp.com');
+        $csp->addSource('img', 'https://*.mailchimp.com');
+
+        // Fonts
+        $csp->addSource('font', 'https://fonts.gstatic.com');
+        $csp->addSource('style', 'https://fonts.googleapis.com');
+
+        // Unpkg
+        $csp->addSource('script', 'https://unpkg.com');
+    },
 ];
 ?>
