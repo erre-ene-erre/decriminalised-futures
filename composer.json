@@ -1,36 +1,29 @@
 {
-  "name": "getkirby/plainkit",
-  "description": "Kirby Plainkit",
-  "type": "project",
-  "keywords": [
-    "kirby",
-    "cms",
-    "plainkit"
-  ],
-  "authors": [
-    {
-      "name": "Rodrigo Nava Ramirez",
-      "email": "email@grodrigonava.mx",
-      "homepage": "https://rodrigonava.mx"
-    }
-  ],
-  "homepage": "https://decriminalisedfutres.org",
-  "support": {
-    "email": "email@grodrigonava.mx",
-    "forum": "https://forum.getkirby.com",
-    "source": "https://github.com/getkirby/plainkit"
-  },
-  "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-    "getkirby/cms": "^4.0"
-  },
-  "config": {
-    "allow-plugins": {
-      "getkirby/composer-installer": true
+    "name": "rodrigo/decriminalisedfutures.org",
+    "description": "A collaborative project to explore sex workers lives, experiences and movement struggles",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rodrigo Nava Ramirez",
+            "email": "email@rodrigonava.mx",
+            "homepage": "https://rodrigonava.mx"
+        }
+    ],
+    "homepage": "https://decriminalisedfutres.org",
+    "require": {
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+        "tobimori/kirby-thumbhash": "^1.1",
+        "getkirby/cms": "^4.8",
+        "bnomei/kirby3-security-headers": "^5.1"
     },
-    "optimize-autoloader": true
-  },
-  "scripts": {
+    "config": {
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        },
+        "optimize-autoloader": true
+    },
+    "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
       "@php -S localhost:8000 kirby/router.php"
