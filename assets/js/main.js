@@ -59,8 +59,8 @@ function init() {
 
     // Open / Close
 
-    accessibilityOpen.addEventListener('click', () => { openDiv(accessibilityModal); });
-    accessibilityClose.addEventListener('click', () => { closeDiv(accessibilityModal); });
+    if(accessibilityOpen) {accessibilityOpen.addEventListener('click', () => { openDiv(accessibilityModal); }) ;}
+    if(accessibilityClose) {accessibilityClose.addEventListener('click', () => { closeDiv(accessibilityModal); }) ;}
 
     // Storing values
     let fontSize = parseInt(localStorage.getItem("fontSize")) || 15,

@@ -593,6 +593,7 @@ a.event:hover{color: inherit;}
 .event-title{margin-bottom: 120px;}
 
 .event .extra-info{
+    pointer-events: none;
     top: 95px;
     display: flex;
     flex-direction: column;
@@ -601,6 +602,7 @@ a.event:hover{color: inherit;}
     align-items: flex-end;
 }
 .extra-info .bordered.highlight {
+    pointer-events: auto;
     padding: 0 var(--margin);
     border: 3px solid var(--highlight-two);
     max-height: 55vh;

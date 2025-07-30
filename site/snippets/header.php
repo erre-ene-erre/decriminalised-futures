@@ -40,7 +40,7 @@
     <?php endif ?>
     <link rel="icon" type='image/png' href="/assets/logos/favicon.png">
 
-    <?= css('/assets/css/index.css?v=1.3.5') ?>
+    <?= css('/assets/css/index.css?v=1.3.6') ?>
 </head>
 <body>
     <main id='swup' class=' transition-fade main-container <?= str_replace(' ', '-', $page -> template()) ?>' >
