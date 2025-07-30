@@ -100,5 +100,8 @@ return [
         // Unpkg
         $csp->addSource('script', 'https://unpkg.com');
     },
+    'bnomei.securityheaders.headers' => [
+    'Permissions-Policy' => "fullscreen=(self 'https://player.vimeo.com' 'https://www.youtube.com')"
+    ]
 ];
 ?>

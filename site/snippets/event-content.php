@@ -47,7 +47,9 @@
                     <iframe class="gallery-item" 
                             width="<?=$videoW?>" 
                             src="<?= $image -> videolink()?>" 
-                            frameborder="0" allowfullscreen>
+                            frameborder="0" 
+                            allowfullscreen mozallowfullscreen webkitallowfullscreen 
+                            allow="fullscreen; picture-in-picture">
                     </iframe>
                     <?php if($image ->caption() -> isNotEmpty()): ?>
                         <figcaption><?= $image -> caption() -> kt() ?></figcaption>
